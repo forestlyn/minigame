@@ -13,11 +13,15 @@ public class Player : MonoBehaviour
     [SerializeField] protected float jumpSpeed;
     [Tooltip("玩家序号  P1（铅笔）值为1  P2（橡皮）值为2")]
     [SerializeField] protected int playerID;
+    [Tooltip("铅笔是否躺着")]
+    [SerializeField] protected bool isLying;
+    [Tooltip("面向方向（1为右 -1为左）")]
+    [SerializeField] protected int faceDirection = 1;
 
 
-    [Header("Layer")]
-    [Tooltip("地面图层")]
-    [SerializeField] protected LayerMask ground;
+    //[Header("Layer")]
+    //[Tooltip("地面图层")]
+    //[SerializeField] protected LayerMask ground;
 
     [Header("引用组件")]
     [Tooltip("玩家的刚体组件")]
@@ -37,9 +41,11 @@ public class Player : MonoBehaviour
         {
             case 1:
                 rb.velocity = new Vector2(speed, rb.velocity.y);
+                faceDirection = 1;
                 break;
             case -1:
                 rb.velocity = new Vector2(-speed, rb.velocity.y);
+                faceDirection = -1;
                 break;
             default:
                 rb.velocity = new Vector2(0f, rb.velocity.y);
@@ -48,8 +54,10 @@ public class Player : MonoBehaviour
     }
 
     //跳跃
-    protected void Jump()
+    protected void Jump(bool isLying)
     {
+        if (isLying)
+            return;
         //判断角色接触地面？？？
         if (Input.GetButtonDown("JumpPlayer" + playerID) && Mathf.Abs(rb.velocity.y) < 0.05f)
         {

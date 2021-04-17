@@ -16,12 +16,13 @@ public class PlayerController2 : Player
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        isLying = false;
     }
 
     void Update()
     {
         HorizontalMove();
-        Jump();
+        Jump(isLying);
         AccumulateJump();
     }
 
