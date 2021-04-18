@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
     [Header("引用组件")]
     [Tooltip("玩家的刚体组件")]
     [SerializeField] protected Rigidbody2D rb;
+    [Tooltip("玩家的transform组件")]
+    [SerializeField]protected Transform player;
     //[SerializeField] protected Collider2D coll;
 
     private void Start()
@@ -41,10 +43,12 @@ public class Player : MonoBehaviour
         {
             case 1:
                 rb.velocity = new Vector2(speed, rb.velocity.y);
+                player.eulerAngles = new Vector2(0, 0);
                 faceDirection = 1;
                 break;
             case -1:
                 rb.velocity = new Vector2(-speed, rb.velocity.y);
+                player.eulerAngles = new Vector2(0, 180);
                 faceDirection = -1;
                 break;
             default:

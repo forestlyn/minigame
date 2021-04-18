@@ -16,6 +16,7 @@ public class PlayerController1 : Player
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        player = GetComponent<Transform>();
     }
 
     private void Update()
@@ -43,19 +44,36 @@ public class PlayerController1 : Player
 
     private void PencilDown()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            if (IsBlocked())
+            if (isLying)
+            {
+                //transform.position += new Vector3(-0.5f, 0.5f, 0);
+                if (faceDirection == 1)
+                {
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+                }
+                else
+                    transform.eulerAngles = new Vector3(0, 180, 0);
+                isLying = false;
                 return;
-            transform.eulerAngles = new Vector3(0, 0, -90);
-            isLying = true;
+            }
+            else if(!isLying)
+            {
+                if (IsBlocked())
+                    return;
+                if (faceDirection == 1)
+                {
+                    transform.eulerAngles = new Vector3(0, 0, -90 * faceDirection);
+                }
+                else
+                    transform.eulerAngles = new Vector3(0, 180, 90 * faceDirection);
+                //transform.position += new Vector3(0.55f, 0, 0);
+                isLying = true;
+                return;
+            }
         }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            transform.position += new Vector3(0, 0.5f, 0);
-            transform.eulerAngles = new Vector3(0, 0, 0);
-            isLying = false;
-        }
+        
     }
 
     private bool IsBlocked()
@@ -65,7 +83,13 @@ public class PlayerController1 : Player
         {
             isBlocked = Physics2D.Raycast(rayPoints[i].transform.position, new Vector2(1 * faceDirection, 0f), pencilLength,1<<LayerMask.NameToLayer("Map"));
             if (isBlocked)
-                break;
+                return isBlocked;
+        }
+        for (int i = 0; i < rayPoints.Length; i++)
+        {
+            isBlocked = Physics2D.Raycast(rayPoints[i].transform.position, new Vector2(1 * faceDirection, 0f), pencilLength, 1 << LayerMask.NameToLayer("Eraser"));
+            if (isBlocked)
+                return isBlocked;
         }
         return isBlocked;
     }

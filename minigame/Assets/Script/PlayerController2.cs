@@ -16,6 +16,7 @@ public class PlayerController2 : Player
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        player = GetComponent<Transform>();
         isLying = false;
     }
 
