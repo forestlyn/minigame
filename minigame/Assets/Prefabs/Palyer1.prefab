@@ -72,7 +72,9 @@ GameObject:
   - component: {fileID: 1361759080427385202}
   - component: {fileID: 1361759080427385203}
   - component: {fileID: 1361759080427385200}
+  - component: {fileID: 1348396708}
   - component: {fileID: 1361759080427385201}
+  - component: {fileID: 1348396714}
   m_Layer: 10
   m_Name: Palyer1
   m_TagString: Pencil
@@ -136,7 +138,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a1d39d5523e5a014a93f4b24a9866ecc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 106a5036efe1b2b47bcca9adb87039ca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -181,9 +183,28 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.1767883, y: 7.914846}
-  m_Size: {x: 3.048513, y: 15.484096}
+  m_Offset: {x: 0.2807544, y: 7.969674}
+  m_Size: {x: 1.9029324, y: 14.656904}
   m_Direction: 0
+--- !u!95 &1348396708
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361759080427385214}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4257c5d18d27f544ea8be69912facdcf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1361759080427385201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +231,20 @@ MonoBehaviour:
   - {fileID: 1361759080613547416}
   - {fileID: 1361759079707608138}
   - {fileID: 1361759079718136206}
+--- !u!114 &1348396714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361759080427385214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de57044a53cf1b046ad55e7c1c0f145a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1361759080613547416
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +269,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1361759080613547416}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.34, y: 2.62, z: 0}
+  m_LocalPosition: {x: 0.42, y: 1.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1361759080427385205}
