@@ -6,7 +6,7 @@ public class Anim : MonoBehaviour
 {
     [SerializeField] protected Rigidbody2D rb;
     [SerializeField] protected Animator anim;
-
+    [SerializeField] protected bool isLying = false;
     protected void AnimSwitchForRun()
     {
         if (Mathf.Abs(rb.velocity.x) > 0.1f && Mathf.Abs(rb.velocity.y) < 0.1f)
@@ -21,8 +21,10 @@ public class Anim : MonoBehaviour
 
     protected void AnimSwitchForJumpAndFall(int playerID)
     {
+        if (isLying)
+            return;
         //当按下跳跃键时
-        if (Input.GetButtonDown("JumpPlayer" + playerID) && Mathf.Abs(rb.velocity.y) < 0.05f)
+        if (Input.GetButton("JumpPlayer" + playerID) && Mathf.Abs(rb.velocity.y) < 0.05f)
         {
             anim.SetBool("jumping", true);
         }

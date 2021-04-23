@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     [Tooltip("玩家序号  P1（铅笔）值为1  P2（橡皮）值为2")]
     [SerializeField] public int playerID;
     [Tooltip("铅笔是否躺着")]
-    [SerializeField] protected bool isLying;
+    [SerializeField] public bool isLying;
     [Tooltip("面向方向（1为右 -1为左）")]
     [SerializeField] protected int faceDirection = 1;
 
@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
         if (isLying)
             return;
         //判断角色接触地面(在斜坡上运动时会有问题)
-        if (Input.GetButtonDown("JumpPlayer" + playerID) && Mathf.Abs(rb.velocity.y) < 0.05f)
+        if (Input.GetButton("JumpPlayer" + playerID) && Mathf.Abs(rb.velocity.y) < 0.05f)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
         }

@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PlayerController1 : Player
 {
-    [Space(20)]
+    [Header("射线相关")]
+    //[Space(10)]
     [Tooltip("检测脚下是否有橡皮的射线长度")]
     [SerializeField] private float rayLength;
     [Tooltip("检测前方是否有障碍物")]
     [SerializeField] private float pencilLength;
-
-    [Space(20)]
     [Tooltip("射线")]
     [SerializeField] GameObject[] rayPoints;
+
+    [Header("铅笔相关")]
+    [SerializeField] float downAndUpTime = 0.25f;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -26,7 +28,7 @@ public class PlayerController1 : Player
         IsOnEraser();
         PencilDown();
     }
-
+    //判断是否在橡皮上
     bool IsOnEraser()
     {
         Vector2 downDirection = new Vector2(0, -1);
@@ -41,41 +43,19 @@ public class PlayerController1 : Player
         }
         return isOnEraser;
     }
-
+    //铅笔倒下或站起
     private void PencilDown()
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
             if (isLying)
-            {
-                //transform.position += new Vector3(-0.5f, 0.5f, 0);
-                if (faceDirection == 1)
-                {
-                    transform.eulerAngles = new Vector3(0, 0, 0);
-                }
-                else
-                    transform.eulerAngles = new Vector3(0, 180, 0);
-                isLying = false;
-                return;
-            }
+                Down();
             else if(!isLying)
-            {
-                if (IsBlocked())
-                    return;
-                if (faceDirection == 1)
-                {
-                    transform.eulerAngles = new Vector3(0, 0, -90 * faceDirection);
-                }
-                else
-                    transform.eulerAngles = new Vector3(0, 180, 90 * faceDirection);
-                //transform.position += new Vector3(0.55f, 0, 0);
-                isLying = true;
-                return;
-            }
+                Up();
         }
         
     }
-
+    //倒下时判断是否有障碍
     private bool IsBlocked()
     {
         bool isBlocked = false;
@@ -92,5 +72,28 @@ public class PlayerController1 : Player
                 return isBlocked;
         }
         return isBlocked;
+    }
+
+    private void Down()
+    {
+        if (faceDirection == 1)
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        else
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        isLying = false;
+        return;
+    }
+
+    private void Up()
+    {
+        if (IsBlocked())
+            return;
+        if (faceDirection == 1)
+            transform.eulerAngles = new Vector3(0, 0, -90 * faceDirection);
+        else
+            transform.eulerAngles = new Vector3(0, 180, 90 * faceDirection);
+        //transform.position += new Vector3(0.55f, 0, 0);
+        isLying = true;
+        return;
     }
 }

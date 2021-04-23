@@ -8,7 +8,9 @@ public class ControlCamera : MonoBehaviour
     [Header("玩家")]
     [SerializeField] private Transform Players1;
     [SerializeField] private Transform Players2;
+    [Tooltip("摄像机为初始尺寸时玩家间最大的距离")]
     [SerializeField] private float maxDistance;
+
     [Header("摄像机")]
     [Tooltip("摄像机")]
     [SerializeField] private CinemachineVirtualCamera mainCamera;
@@ -44,9 +46,10 @@ public class ControlCamera : MonoBehaviour
         else
             transform.position = (Players1.position + Players2.position) / 2 + new Vector3(0, 0, -10);
     }
+
+    //视野缩放
     void View()
     {
-        //放大视野
         float distanceBetweenPlayers = (Players1.position - Players2.position).sqrMagnitude;
         //玩家距离过大
         if (distanceBetweenPlayers > maxDistance && distanceBetweenPlayers > nowDistance - changeDistance)
@@ -60,9 +63,5 @@ public class ControlCamera : MonoBehaviour
         {
             mainCamera.m_Lens.OrthographicSize = defaultSize;
         }
-
-
-
-        //缩小视野
     }
 }
