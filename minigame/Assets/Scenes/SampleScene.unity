@@ -736,7 +736,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 8.564285
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -996,7 +996,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 674011102}
+  m_LookAt: {fileID: 0}
   m_Follow: {fileID: 674011102}
   m_Lens:
     FieldOfView: 40
@@ -1104,6 +1104,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1361759080427385201, guid: 4cc1687481e3ae44da4bc94dabfe7a47,
+        type: 3}
+      propertyPath: downAndUpTime
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1361759080427385205, guid: 4cc1687481e3ae44da4bc94dabfe7a47,
         type: 3}
       propertyPath: m_RootOrder

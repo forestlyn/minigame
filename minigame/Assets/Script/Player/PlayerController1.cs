@@ -14,19 +14,29 @@ public class PlayerController1 : Player
     [SerializeField] GameObject[] rayPoints;
 
     [Header("铅笔相关")]
-    [SerializeField] float downAndUpTime = 0.25f;
+    [SerializeField] public float downAndUpTime = 0.5f;
+    [SerializeField] public float time = 10f;
+    [SerializeField] private Animator anim;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Transform>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        HorizontalMove();
-        Jump(isLying);
+        if (time == downAndUpTime)
+        {
+            HorizontalMove();
+            Jump(isLying);
+        }
+        
         IsOnEraser();
         PencilDown();
+        if (isLying) Down();
+        else Up();
     }
     //判断是否在橡皮上
     bool IsOnEraser()
@@ -48,10 +58,22 @@ public class PlayerController1 : Player
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
+            
             if (isLying)
-                Down();
-            else if(!isLying)
-                Up();
+            {
+                isLying = false;
+                time = 0;
+                anim.SetBool("lying", false);
+            }
+                
+            else if (!isLying && !IsBlocked())
+            {
+                isLying = true;
+                time = 0;
+                anim.SetBool("lying", true);
+
+            }
+                
         }
         
     }
@@ -74,26 +96,29 @@ public class PlayerController1 : Player
         return isBlocked;
     }
 
-    private void Down()
+    private void Up()
     {
+        time += Time.deltaTime;
+        if (time > downAndUpTime)
+        {
+            time = downAndUpTime;
+        }
         if (faceDirection == 1)
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            transform.eulerAngles = new Vector3(0, 0, -90 + 90 * faceDirection * time / downAndUpTime);
         else
-            transform.eulerAngles = new Vector3(0, 180, 0);
-        isLying = false;
+            transform.eulerAngles = new Vector3(0, 180, -90 - 90 * faceDirection * time / downAndUpTime);
         return;
     }
 
-    private void Up()
+    private void Down()
     {
-        if (IsBlocked())
-            return;
+        time += Time.deltaTime;
+        if (time > downAndUpTime)
+            time = downAndUpTime;
         if (faceDirection == 1)
-            transform.eulerAngles = new Vector3(0, 0, -90 * faceDirection);
+            transform.eulerAngles = new Vector3(0, 0, -90 * faceDirection * time / downAndUpTime);
         else
-            transform.eulerAngles = new Vector3(0, 180, 90 * faceDirection);
-        //transform.position += new Vector3(0.55f, 0, 0);
-        isLying = true;
+            transform.eulerAngles = new Vector3(0, 180, 90 * faceDirection * time / downAndUpTime);
         return;
     }
 }

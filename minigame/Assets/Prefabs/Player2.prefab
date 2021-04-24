@@ -206,3 +206,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   anim: {fileID: 0}
+  isLying: 0

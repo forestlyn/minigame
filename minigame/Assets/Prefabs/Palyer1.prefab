@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1361759079718136206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 15.81, z: 0}
+  m_LocalPosition: {x: -0.27, y: 13.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1361759080427385205}
@@ -225,12 +225,14 @@ MonoBehaviour:
   faceDirection: 1
   rb: {fileID: 0}
   player: {fileID: 0}
-  rayLength: 1.1
-  pencilLength: 2.5
+  rayLength: 0.5
+  pencilLength: 3.5
   rayPoints:
   - {fileID: 1361759080613547416}
   - {fileID: 1361759079707608138}
   - {fileID: 1361759079718136206}
+  downAndUpTime: 1
+  time: 10
 --- !u!114 &1348396714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   anim: {fileID: 0}
+  isLying: 0
 --- !u!1 &1361759080613547416
 GameObject:
   m_ObjectHideFlags: 0

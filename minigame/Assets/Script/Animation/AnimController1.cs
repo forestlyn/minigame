@@ -14,17 +14,13 @@ public class AnimController1 : Anim
     private void Update()
     {
         isLying = playerController1.isLying;
-
-        AnimSwitchForRun();
-
-        AnimSwitchForJumpAndFall(1);
-    }
-    //??
-    void AnimSwitchForLie()
-    {
-        if (Input.GetKey(KeyCode.S))
+        if (playerController1.time == playerController1.downAndUpTime)
         {
+            AnimSwitchForRun();
 
+            AnimSwitchForJumpAndFall(1);
         }
+        
     }
+    
 }
