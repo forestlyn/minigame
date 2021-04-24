@@ -64,6 +64,7 @@ public class PlayerController1 : Player
                 isLying = false;
                 time = 0;
                 anim.SetBool("lying", false);
+                anim.SetBool("up", true);
             }
                 
             else if (!isLying && !IsBlocked())
@@ -71,7 +72,6 @@ public class PlayerController1 : Player
                 isLying = true;
                 time = 0;
                 anim.SetBool("lying", true);
-
             }
                 
         }
@@ -120,5 +120,10 @@ public class PlayerController1 : Player
         else
             transform.eulerAngles = new Vector3(0, 180, 90 * faceDirection * time / downAndUpTime);
         return;
+    }
+
+    public void SetUpToFalse()
+    {
+        anim.SetBool("up", false);
     }
 }
