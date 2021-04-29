@@ -18,6 +18,10 @@ public class Player : MonoBehaviour
     [Tooltip("面向方向（1为右 -1为左）")]
     [SerializeField] protected int faceDirection = 1;
 
+    [Header("射线")]
+    [Tooltip("用于检测是否在地面上")]
+    [SerializeField] private float jumpRayLength = 0.5f;
+
 
     //[Header("Layer")]
     //[Tooltip("地面图层")]
@@ -68,10 +72,24 @@ public class Player : MonoBehaviour
     {
         if (isLying)
             return;
-        //判断角色接触地面(在斜坡上运动时会有问题)
-        if (Input.GetButton("JumpPlayer" + playerID) && Mathf.Abs(rb.velocity.y) < 0.05f)
+        ////判断角色接触地面(在斜坡上运动时会有问题)
+        
+
+        if (IsOnGround())
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+            if (Input.GetButton("JumpPlayer" + playerID))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+            }
         }
+    }
+
+    bool IsOnGround()
+    {
+
+        Vector2 downDirection = new Vector2(0, -1);
+        bool isOnGround = Physics2D.Raycast(transform.position, downDirection, jumpRayLength, 1 << LayerMask.NameToLayer("Map"));
+
+        return isOnGround;
     }
 }
