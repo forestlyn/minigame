@@ -14,5 +14,21 @@ public class AnimController2 : Anim
         AnimSwitchForRun();
 
         AnimSwitchForJumpAndFall(2);
+        AccumulateJump();
+    }
+
+    protected void AccumulateJump()
+    {
+        //蓄力
+        if (Input.GetButton("Accumulate"))
+        {
+            anim.SetBool("accumulating", true);
+        }
+        //跳跃
+        if (Input.GetButtonUp("Accumulate") && Mathf.Abs(rb.velocity.y) < 0.05f)
+        {
+            anim.SetBool("accumulating", false);
+            anim.SetBool("jumping", true);
+        }
     }
 }

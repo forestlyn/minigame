@@ -68,14 +68,14 @@ public class Player : MonoBehaviour
     }
 
     //跳跃
-    protected void Jump(bool isLying)
+    protected void Jump(bool isLying, bool isOnEraser)
     {
         if (isLying)
             return;
         ////判断角色接触地面(在斜坡上运动时会有问题)
         
 
-        if (IsOnGround())
+        if (IsOnGround() || isOnEraser)
         {
             if (Input.GetButton("JumpPlayer" + playerID))
             {

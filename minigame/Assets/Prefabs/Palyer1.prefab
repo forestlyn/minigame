@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1361759079707608138}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.21, y: 7.64, z: 0}
+  m_LocalPosition: {x: -0.21, y: 5.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1361759080427385205}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1361759079718136206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.27, y: 13.73, z: 0}
+  m_LocalPosition: {x: -0.27, y: 12.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1361759080427385205}
@@ -183,8 +183,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2807544, y: 7.969674}
-  m_Size: {x: 1.9029324, y: 14.656904}
+  m_Offset: {x: -0.33311844, y: 6.8776274}
+  m_Size: {x: 1.9675475, y: 14.152883}
   m_Direction: 0
 --- !u!95 &1348396708
 Animator:
@@ -223,6 +223,7 @@ MonoBehaviour:
   playerID: 1
   isLying: 0
   faceDirection: 1
+  jumpRayLength: 0.08
   rb: {fileID: 0}
   player: {fileID: 0}
   rayLength: 0.5
@@ -231,8 +232,9 @@ MonoBehaviour:
   - {fileID: 1361759080613547416}
   - {fileID: 1361759079707608138}
   - {fileID: 1361759079718136206}
-  downAndUpTime: 1
+  downAndUpTime: 0.5
   time: 10
+  anim: {fileID: 0}
 --- !u!114 &1348396714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,7 +274,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1361759080613547416}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.42, y: 1.88, z: 0}
+  m_LocalPosition: {x: 0.42, y: 1.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1361759080427385205}

@@ -30,7 +30,7 @@ public class PlayerController1 : Player
         if (time == downAndUpTime)
         {
             HorizontalMove();
-            Jump(isLying);
+            Jump(isLying,IsOnEraser());
         }
         
         IsOnEraser();

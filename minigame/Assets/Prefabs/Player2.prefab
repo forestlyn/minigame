@@ -187,6 +187,7 @@ MonoBehaviour:
   playerID: 2
   isLying: 0
   faceDirection: 1
+  jumpRayLength: 0.663
   rb: {fileID: 0}
   player: {fileID: 0}
   maxAccumulateTime: 1
