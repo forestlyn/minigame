@@ -10,7 +10,7 @@ public class PlayerController1 : Player
     [SerializeField] private float rayLength;
     [Tooltip("检测前方是否有障碍物")]
     [SerializeField] private float pencilLength;
-    [Tooltip("射线")]
+    [Tooltip("检测障碍物射线")]
     [SerializeField] GameObject[] rayPoints;
 
     [Header("铅笔相关")]

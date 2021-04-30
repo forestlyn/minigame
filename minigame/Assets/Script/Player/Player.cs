@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     [Header("射线")]
     [Tooltip("用于检测是否在地面上")]
     [SerializeField] private float jumpRayLength = 0.5f;
+    [Tooltip("跳跃判定点")]
+    [SerializeField] private List<Transform> jumpPoint;
 
 
     //[Header("Layer")]
@@ -86,10 +88,12 @@ public class Player : MonoBehaviour
 
     bool IsOnGround()
     {
-
+        bool isOnGround = false;
         Vector2 downDirection = new Vector2(0, -1);
-        bool isOnGround = Physics2D.Raycast(transform.position, downDirection, jumpRayLength, 1 << LayerMask.NameToLayer("Map"));
-
+        foreach (Transform item in jumpPoint)
+        {
+            isOnGround = Physics2D.Raycast(item.position, downDirection, jumpRayLength, 1 << LayerMask.NameToLayer("Map"));
+        }
         return isOnGround;
     }
 }
