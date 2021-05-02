@@ -5,36 +5,35 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [Header("基本属性")]
+    [Tooltip("玩家序号  P1（铅笔）值为1  P2（橡皮）值为2")]
+    [SerializeField] public int playerID;
+    [Space]
     [Tooltip("移动速度")]
     [SerializeField] protected float speed;
     [Tooltip("跳跃速度（默认值）")]
     [SerializeField] protected float defaultJumpSpeed;
     [Tooltip("跳跃速度（真实值）")]
     [SerializeField] protected float jumpSpeed;
-    [Tooltip("玩家序号  P1（铅笔）值为1  P2（橡皮）值为2")]
-    [SerializeField] public int playerID;
-    [Tooltip("铅笔是否躺着")]
-    [SerializeField] public bool isLying;
+    [Space]
     [Tooltip("面向方向（1为右 -1为左）")]
     [SerializeField] protected int faceDirection = 1;
+    [Tooltip("铅笔是否躺着")]
+    [SerializeField] public bool isLying;
 
     [Header("射线")]
     [Tooltip("用于检测是否在地面上")]
     [SerializeField] private float jumpRayLength = 0.5f;
     [Tooltip("跳跃判定点")]
     [SerializeField] private List<Transform> jumpPoint;
-
-
-    //[Header("Layer")]
-    //[Tooltip("地面图层")]
-    //[SerializeField] protected LayerMask ground;
+    [Space]
+    [Tooltip("用于检测脚下是否有铅笔或橡皮")]
+    [SerializeField] private float rayLength;
 
     [Header("引用组件")]
     [Tooltip("玩家的刚体组件")]
     [SerializeField] protected Rigidbody2D rb;
     [Tooltip("玩家的transform组件")]
     [SerializeField]protected Transform player;
-    //[SerializeField] protected Collider2D coll;
 
     private void Start()
     {
@@ -69,15 +68,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    //跳跃
-    protected void Jump(bool isLying, bool isOnEraser)
+    #region 跳跃
+    protected void Jump(bool isOnPencilOrEraser)
     {
-        if (isLying)
+        if (this.isLying)//倒下时禁止一切动作
             return;
-        ////判断角色接触地面(在斜坡上运动时会有问题)
-        
 
-        if (IsOnGround() || isOnEraser)
+        if (IsOnGround() || isOnPencilOrEraser)
         {
             if (Input.GetButton("JumpPlayer" + playerID))
             {
@@ -93,7 +90,38 @@ public class Player : MonoBehaviour
         foreach (Transform item in jumpPoint)
         {
             isOnGround = Physics2D.Raycast(item.position, downDirection, jumpRayLength, 1 << LayerMask.NameToLayer("Map"));
+            Debug.DrawRay(item.position, downDirection * jumpRayLength, Color.green);
         }
+        Debug.Log("isOnGround = " + isOnGround);
         return isOnGround;
     }
+
+    protected bool IsOnPencilOrEraser(int playerID)
+    {//铅笔playerID为1 橡皮playerID为2 
+        if (playerID != 1 && playerID != 2)
+        {
+            Debug.Log("Player.cs :1");
+        }
+
+        
+        Vector2 downDirection = new Vector2(0, -1);
+        bool isOnPencilOrEraser;
+        if(playerID == 1)
+        {
+            isOnPencilOrEraser = Physics2D.Raycast(transform.position, downDirection, rayLength, 1 << LayerMask.NameToLayer("Eraser"));
+
+            if (isOnPencilOrEraser)
+                jumpSpeed = defaultJumpSpeed * 1.22f;
+            else
+                jumpSpeed = defaultJumpSpeed;
+        }
+        else
+        {
+            isOnPencilOrEraser = Physics2D.Raycast(transform.position, downDirection, rayLength, 1 << LayerMask.NameToLayer("Pencil"));
+        }
+        Debug.DrawRay(transform.position, downDirection * rayLength, Color.black);
+        Debug.Log(isOnPencilOrEraser);
+        return isOnPencilOrEraser;
+    }
+    #endregion
 }

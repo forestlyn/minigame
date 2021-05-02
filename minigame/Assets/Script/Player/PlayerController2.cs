@@ -23,7 +23,7 @@ public class PlayerController2 : Player
     void Update()
     {
         HorizontalMove();
-        Jump(isLying, false);
+        Jump(IsOnPencilOrEraser(2));
         AccumulateJump();
     }
 
