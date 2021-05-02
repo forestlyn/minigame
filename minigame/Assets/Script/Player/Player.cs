@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
     #region 跳跃
     protected void Jump(bool isOnPencilOrEraser)
     {
+        Debug.Log(playerID + ":" + isOnPencilOrEraser);
         if (this.isLying)//倒下时禁止一切动作
             return;
 
@@ -92,7 +93,7 @@ public class Player : MonoBehaviour
             isOnGround = Physics2D.Raycast(item.position, downDirection, jumpRayLength, 1 << LayerMask.NameToLayer("Map"));
             Debug.DrawRay(item.position, downDirection * jumpRayLength, Color.green);
         }
-        Debug.Log("isOnGround = " + isOnGround);
+        //Debug.Log("isOnGround = " + isOnGround);
         return isOnGround;
     }
 
@@ -120,7 +121,6 @@ public class Player : MonoBehaviour
             isOnPencilOrEraser = Physics2D.Raycast(transform.position, downDirection, rayLength, 1 << LayerMask.NameToLayer("Pencil"));
         }
         Debug.DrawRay(transform.position, downDirection * rayLength, Color.black);
-        Debug.Log(isOnPencilOrEraser);
         return isOnPencilOrEraser;
     }
     #endregion
