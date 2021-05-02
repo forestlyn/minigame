@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
     #region 跳跃
     protected void Jump(bool isOnPencilOrEraser)
     {
-        Debug.Log(playerID + ":" + isOnPencilOrEraser);
+        //Debug.Log(playerID + ":" + isOnPencilOrEraser);
         if (this.isLying)//倒下时禁止一切动作
             return;
 

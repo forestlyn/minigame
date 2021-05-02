@@ -7,8 +7,11 @@ public class Elevator : MonoBehaviour
     [Header("平台")]
     [SerializeField] private Transform platform;
 
-    void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if(collision.transform.CompareTag("Pencil") || collision.transform.CompareTag("Eraser"))
+        {
+
+        }
     }
 }
