@@ -15,6 +15,8 @@ public class PlayerController1 : Player
     [SerializeField] public float downAndUpTime = 0.5f;
     [SerializeField] public float time = 10f;
     [SerializeField] private Animator anim;
+    [Tooltip("检测楼梯射线长度")]
+    [SerializeField] private float Stairs_Raylength;
 
     private void Awake()
     {
@@ -111,5 +113,30 @@ public class PlayerController1 : Player
         anim.SetBool("up", false);
     }
     #endregion
-
+    //protected override void Jump(bool isOnPencilOrEraser)
+    //{
+    //    //Debug.Log(playerID + ":" + isOnPencilOrEraser);
+    //    if (this.isLying)//倒下时禁止一切动作
+    //        return;
+    //    if (Stairs())
+    //    {
+    //        if (Input.GetButton("JumpPlayer" + playerID))
+    //        {
+    //            transform.position += new Vector3(0, speed, 0);
+    //            return;
+    //        }
+                      
+    //    }
+    //    if (IsOnGround() || isOnPencilOrEraser)
+    //    {
+    //        if (Input.GetButton("JumpPlayer" + playerID))
+    //        {
+    //            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+    //        }
+    //    }
+    //}
+    //bool Stairs()
+    //{
+    //    return Physics2D.Raycast(transform.position, new Vector2(0, 1), Stairs_Raylength, 1 << LayerMask.NameToLayer("Stairs"));
+    //}
 }

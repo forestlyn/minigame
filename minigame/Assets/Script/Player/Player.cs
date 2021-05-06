@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     [Tooltip("玩家的刚体组件")]
     [SerializeField] protected Rigidbody2D rb;
     [Tooltip("玩家的transform组件")]
-    [SerializeField]protected Transform player;
+    [SerializeField] protected Transform player;
 
     private void Start()
     {
@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
             rb.velocity = new Vector2(0, 0);
             return;
         }
-            
+
         float moveDirection = Input.GetAxisRaw("HorizontalPlayer" + playerID);
         switch (moveDirection)
         {
@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    bool IsOnGround()
+    protected bool IsOnGround()
     {
         bool isOnGround = false;
         Vector2 downDirection = new Vector2(0, -1);
@@ -104,10 +104,10 @@ public class Player : MonoBehaviour
             Debug.Log("Player.cs :1");
         }
 
-        
+
         Vector2 downDirection = new Vector2(0, -1);
         bool isOnPencilOrEraser;
-        if(playerID == 1)
+        if (playerID == 1)
         {
             isOnPencilOrEraser = Physics2D.Raycast(transform.position, downDirection, rayLength, 1 << LayerMask.NameToLayer("Eraser"));
 
@@ -125,3 +125,5 @@ public class Player : MonoBehaviour
     }
     #endregion
 }
+   
+

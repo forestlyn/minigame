@@ -168,7 +168,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: bcadd5d848596d14387741b3d7f58a1b, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &3125341954188474478
 CapsuleCollider2D:
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerID: 2
   speed: 6
-  defaultJumpSpeed: 13
+  defaultJumpSpeed: 20
   jumpSpeed: 0
   faceDirection: 1
   isLying: 0

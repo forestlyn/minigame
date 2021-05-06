@@ -18,7 +18,7 @@ TagManager:
   - Map
   - Eraser
   - Pencil
-  - 
+  - Stairs
   - 
   - 
   - 
@@ -51,6 +51,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1882171439
+    locked: 0
+  - name: Stair
+    uniqueID: 951601117
     locked: 0
   - name: Frontground
     uniqueID: 2993331081
