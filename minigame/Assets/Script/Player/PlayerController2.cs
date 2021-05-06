@@ -42,7 +42,7 @@ public class PlayerController2 : Player
             database.accumulate = false;
             database.jumping = true;
             float _ratio = (Mathf.Sqrt(ratio) - 0.5f) * accumulateTime / maxAccumulateTime;
-            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed * (0.5f + _ratio));
+            rb.velocity = new Vector2(rb.velocity.x, database.jumpSpeed * (0.5f + _ratio));
             accumulateTime = 0;
         }
     }

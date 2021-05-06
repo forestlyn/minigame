@@ -8,12 +8,12 @@ public class Player : MonoBehaviour
     [Tooltip("玩家序号  P1（铅笔）值为1  P2（橡皮）值为2")]
     [SerializeField] public int playerID;
     [Space]
-    [Tooltip("移动速度")]
-    [SerializeField] protected float speed;
-    [Tooltip("跳跃速度（默认值）")]
-    [SerializeField] protected float defaultJumpSpeed;
-    [Tooltip("跳跃速度（真实值）")]
-    [SerializeField] protected float jumpSpeed;
+    //[Tooltip("移动速度")]
+    //[SerializeField] protected float speed;
+    //[Tooltip("跳跃速度（默认值）")]
+    //[SerializeField] protected float defaultJumpSpeed;
+    //[Tooltip("跳跃速度（真实值）")]
+    //[SerializeField] protected float jumpSpeed;
     [Space]
     [Tooltip("面向方向（1为右 -1为左）")]
     [SerializeField] protected int faceDirection = 1;
@@ -33,10 +33,12 @@ public class Player : MonoBehaviour
     [Tooltip("玩家的transform组件")]
     [SerializeField] protected Transform player;
     [Space]
+    [Tooltip("角色状态")]
     [SerializeField] protected Database database;
     private void Start()
     {
-        jumpSpeed = defaultJumpSpeed;
+        //database.speed = 6;
+        database.jumpSpeed = database.defaultJumpSpeed;
     }
 
     //水平移动
@@ -52,14 +54,14 @@ public class Player : MonoBehaviour
         switch (moveDirection)
         {
             case 1:
-                rb.velocity = new Vector2(speed, rb.velocity.y);
+                rb.velocity = new Vector2(database.speed, rb.velocity.y);
                 player.eulerAngles = new Vector2(0, 0);
                 faceDirection = 1;
                 database.idle = false;
                 database.running = true;
                 break;
             case -1:
-                rb.velocity = new Vector2(-speed, rb.velocity.y);
+                rb.velocity = new Vector2(-database.speed, rb.velocity.y);
                 player.eulerAngles = new Vector2(0, 180);
                 faceDirection = -1;
                 database.idle = false;
@@ -79,11 +81,11 @@ public class Player : MonoBehaviour
         if (database.isLying)//倒下时禁止一切动作
             return;
 
-        if (IsOnGround() || isOnPencilOrEraser)
+        if (IsOnGround() || isOnPencilOrEraser && !database.jumping)
         {
             if (Input.GetButton("JumpPlayer" + playerID))
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+                rb.velocity = new Vector2(rb.velocity.x, database.jumpSpeed);
                 database.running = false;
                 database.idle = false;
                 database.jumping = true;
@@ -119,9 +121,9 @@ public class Player : MonoBehaviour
             isOnPencilOrEraser = Physics2D.Raycast(transform.position, downDirection, rayLength, 1 << LayerMask.NameToLayer("Eraser"));
 
             if (isOnPencilOrEraser)
-                jumpSpeed = defaultJumpSpeed * 1.22f;
+                database.jumpSpeed = database.defaultJumpSpeed * 1.22f;
             else
-                jumpSpeed = defaultJumpSpeed;
+                database.jumpSpeed = database.defaultJumpSpeed;
         }
         else
         {

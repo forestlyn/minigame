@@ -41,12 +41,11 @@ public class PlayerController1 : Player
     #region 铅笔倒下或站起
     private void PencilDown()
     {
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) && !database.jumping && !database.falling)
         {
             
             if (database.isLying)
             {
-                database.isLying = false;
                 time = 0;
                 database.isLying = false;
                 database.up = true;
