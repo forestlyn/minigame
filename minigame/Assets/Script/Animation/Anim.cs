@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Anim : MonoBehaviour
 {
+    [SerializeField] protected Database database;
     [SerializeField] protected Rigidbody2D rb;
     [SerializeField] protected Animator anim;
-    [SerializeField] protected bool isLying = false;
     protected void AnimSwitchForRun()
     {
         if (Mathf.Abs(rb.velocity.x) > 0.1f && Mathf.Abs(rb.velocity.y) < 0.1f)
@@ -21,25 +21,17 @@ public class Anim : MonoBehaviour
 
     protected void AnimSwitchForJumpAndFall(int playerID)
     {
-        if (isLying)
+        if (database.isLying)
             return;
-        //当按下跳跃键时
-        if (Input.GetButton("JumpPlayer" + playerID) && Mathf.Abs(rb.velocity.y) < 0.05f)
+
+        if (rb.velocity.y < 0)
         {
-            anim.SetBool("jumping", true);
+            database.jumping = false;
+            database.falling = true;
         }
-        //当跳跃过程中 Y轴速度小于0
-        else if (anim.GetBool("jumping"))
+        else if (Mathf.Abs(rb.velocity.y) < 0.05f)
         {
-            if (rb.velocity.y <= 0)
-            {
-                anim.SetBool("jumping", false);
-                anim.SetBool("falling", true);
-            }
-        }
-        else if(Mathf.Abs(rb.velocity.y) < 0.05f)
-        {
-            anim.SetBool("falling", false);
+            database.falling = false;
         }
     }
 }

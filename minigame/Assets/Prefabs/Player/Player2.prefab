@@ -248,7 +248,6 @@ MonoBehaviour:
   defaultJumpSpeed: 20
   jumpSpeed: 0
   faceDirection: 1
-  isLying: 0
   jumpRayLength: 0.663
   jumpPoint:
   - {fileID: 1394538528}
@@ -256,6 +255,7 @@ MonoBehaviour:
   rayLength: 0.85
   rb: {fileID: 0}
   player: {fileID: 0}
+  database: {fileID: 11400000, guid: 27fd049d8885f9344916a452f1c937eb, type: 2}
   maxAccumulateTime: 1
   accumulateTime: 0
   ratio: 2
@@ -271,6 +271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1a486cf81caac48a235fc5603f9550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  database: {fileID: 11400000, guid: 27fd049d8885f9344916a452f1c937eb, type: 2}
   rb: {fileID: 0}
   anim: {fileID: 0}
-  isLying: 0

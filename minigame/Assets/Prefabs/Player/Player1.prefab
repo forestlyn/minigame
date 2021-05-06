@@ -215,8 +215,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.33311844, y: 6.805388}
-  m_Size: {x: 1.7278159, y: 14.297361}
+  m_Offset: {x: -0.29146123, y: 6.805388}
+  m_Size: {x: 1.9586416, y: 14.297361}
   m_Direction: 0
 --- !u!60 &1228219739
 PolygonCollider2D:
@@ -440,13 +440,13 @@ MonoBehaviour:
   defaultJumpSpeed: 20
   jumpSpeed: 0
   faceDirection: 1
-  isLying: 0
   jumpRayLength: 0.7
   jumpPoint:
   - {fileID: 753065836}
   rayLength: 0.5
   rb: {fileID: 0}
   player: {fileID: 0}
+  database: {fileID: 11400000, guid: 3a7be8ff590005c4cae62abddc62cf35, type: 2}
   pencilLength: 3.5
   rayPoints:
   - {fileID: 1361759080613547416}
@@ -468,9 +468,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de57044a53cf1b046ad55e7c1c0f145a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  database: {fileID: 11400000, guid: 3a7be8ff590005c4cae62abddc62cf35, type: 2}
   rb: {fileID: 0}
   anim: {fileID: 0}
-  isLying: 0
 --- !u!1 &1361759080613547416
 GameObject:
   m_ObjectHideFlags: 0

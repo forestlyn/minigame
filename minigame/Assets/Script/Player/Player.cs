@@ -17,8 +17,6 @@ public class Player : MonoBehaviour
     [Space]
     [Tooltip("面向方向（1为右 -1为左）")]
     [SerializeField] protected int faceDirection = 1;
-    [Tooltip("铅笔是否躺着")]
-    [SerializeField] public bool isLying;
 
     [Header("射线")]
     [Tooltip("用于检测是否在地面上")]
@@ -34,7 +32,8 @@ public class Player : MonoBehaviour
     [SerializeField] protected Rigidbody2D rb;
     [Tooltip("玩家的transform组件")]
     [SerializeField] protected Transform player;
-
+    [Space]
+    [SerializeField] protected Database database;
     private void Start()
     {
         jumpSpeed = defaultJumpSpeed;
@@ -43,7 +42,7 @@ public class Player : MonoBehaviour
     //水平移动
     protected void HorizontalMove()
     {
-        if (isLying)
+        if (database.isLying)
         {
             rb.velocity = new Vector2(0, 0);
             return;
@@ -56,14 +55,19 @@ public class Player : MonoBehaviour
                 rb.velocity = new Vector2(speed, rb.velocity.y);
                 player.eulerAngles = new Vector2(0, 0);
                 faceDirection = 1;
+                database.idle = false;
+                database.running = true;
                 break;
             case -1:
                 rb.velocity = new Vector2(-speed, rb.velocity.y);
                 player.eulerAngles = new Vector2(0, 180);
                 faceDirection = -1;
+                database.idle = false;
+                database.running = true;
                 break;
             default:
                 rb.velocity = new Vector2(0f, rb.velocity.y);
+                database.running = false;
                 break;
         }
     }
@@ -72,7 +76,7 @@ public class Player : MonoBehaviour
     protected void Jump(bool isOnPencilOrEraser)
     {
         //Debug.Log(playerID + ":" + isOnPencilOrEraser);
-        if (this.isLying)//倒下时禁止一切动作
+        if (database.isLying)//倒下时禁止一切动作
             return;
 
         if (IsOnGround() || isOnPencilOrEraser)
@@ -80,6 +84,9 @@ public class Player : MonoBehaviour
             if (Input.GetButton("JumpPlayer" + playerID))
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+                database.running = false;
+                database.idle = false;
+                database.jumping = true;
             }
         }
     }

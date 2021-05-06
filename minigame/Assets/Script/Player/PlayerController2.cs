@@ -17,7 +17,6 @@ public class PlayerController2 : Player
     {
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Transform>();
-        isLying = false;
     }
 
     void Update()
@@ -33,12 +32,15 @@ public class PlayerController2 : Player
         //蓄力
         if (Input.GetButton("Accumulate"))
         {
+            database.accumulate = true;
             if (accumulateTime < 1f)
                 accumulateTime += Time.deltaTime;
         }
         //跳跃
         if (Input.GetButtonUp("Accumulate") && Mathf.Abs(rb.velocity.y)<0.05f)
         {
+            database.accumulate = false;
+            database.jumping = true;
             float _ratio = (Mathf.Sqrt(ratio) - 0.5f) * accumulateTime / maxAccumulateTime;
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed * (0.5f + _ratio));
             accumulateTime = 0;

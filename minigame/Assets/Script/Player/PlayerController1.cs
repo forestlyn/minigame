@@ -33,9 +33,8 @@ public class PlayerController1 : Player
             Jump(IsOnPencilOrEraser(1));
         }
         
-        //IsOnEraser();
         PencilDown();
-        if (isLying) Down();
+        if (database.isLying) Down();
         else Up();
     }
 
@@ -45,19 +44,18 @@ public class PlayerController1 : Player
         if (Input.GetKeyDown(KeyCode.S))
         {
             
-            if (isLying)
+            if (database.isLying)
             {
-                isLying = false;
+                database.isLying = false;
                 time = 0;
-                anim.SetBool("lying", false);
-                anim.SetBool("up", true);
+                database.isLying = false;
+                database.up = true;
             }
                 
-            else if (!isLying && !IsBlocked())
+            else if (!database.isLying && !IsBlocked())
             {
-                isLying = true;
+                database.isLying = true;
                 time = 0;
-                anim.SetBool("lying", true);
             }
                 
         }
@@ -110,33 +108,7 @@ public class PlayerController1 : Player
     //铅笔站起后将状态切换为idle
     public void SetUpToFalse()
     {
-        anim.SetBool("up", false);
+        database.up = false;
     }
     #endregion
-    //protected override void Jump(bool isOnPencilOrEraser)
-    //{
-    //    //Debug.Log(playerID + ":" + isOnPencilOrEraser);
-    //    if (this.isLying)//倒下时禁止一切动作
-    //        return;
-    //    if (Stairs())
-    //    {
-    //        if (Input.GetButton("JumpPlayer" + playerID))
-    //        {
-    //            transform.position += new Vector3(0, speed, 0);
-    //            return;
-    //        }
-                      
-    //    }
-    //    if (IsOnGround() || isOnPencilOrEraser)
-    //    {
-    //        if (Input.GetButton("JumpPlayer" + playerID))
-    //        {
-    //            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
-    //        }
-    //    }
-    //}
-    //bool Stairs()
-    //{
-    //    return Physics2D.Raycast(transform.position, new Vector2(0, 1), Stairs_Raylength, 1 << LayerMask.NameToLayer("Stairs"));
-    //}
 }
