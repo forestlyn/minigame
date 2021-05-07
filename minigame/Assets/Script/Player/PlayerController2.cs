@@ -29,22 +29,24 @@ public class PlayerController2 : Player
     //蓄力跳跃
     protected void AccumulateJump()
     {
-        //蓄力
-        if (Input.GetButton("Accumulate"))
+        if (!database.jumping && !database.falling)
         {
-            database.accumulate = true;
-            if (accumulateTime < 1f)
-                accumulateTime += Time.deltaTime;
-        }
-        //跳跃
-        if (Input.GetButtonUp("Accumulate") && Mathf.Abs(rb.velocity.y)<0.05f)
-        {
-            database.accumulate = false;
-            database.jumping = true;
-            float _ratio = (Mathf.Sqrt(ratio) - 0.5f) * accumulateTime / maxAccumulateTime;
-            rb.velocity = new Vector2(rb.velocity.x, database.jumpSpeed * (0.5f + _ratio));
-            accumulateTime = 0;
+            //蓄力
+            if (Input.GetButton("Accumulate"))
+            {
+                database.accumulate = true;
+                if (accumulateTime < 1f)
+                    accumulateTime += Time.deltaTime;
+            }
+            //跳跃
+            if (Input.GetButtonUp("Accumulate") && Mathf.Abs(rb.velocity.y) < 0.05f)
+            {
+                database.accumulate = false;
+                database.jumping = true;
+                float _ratio = (Mathf.Sqrt(ratio) - 0.5f) * accumulateTime / maxAccumulateTime;
+                rb.velocity = new Vector2(rb.velocity.x, database.jumpSpeed * (0.5f + _ratio));
+                accumulateTime = 0;
+            }
         }
     }
-
 }
