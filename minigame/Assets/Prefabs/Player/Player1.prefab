@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1361759079707608141}
   m_Layer: 10
-  m_Name: GameObject (1)
+  m_Name: BlockedPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -70,7 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1361759079718136193}
   m_Layer: 10
-  m_Name: GameObject (2)
+  m_Name: BlockedPoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -436,9 +436,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: 1
-  speed: 6
-  defaultJumpSpeed: 20
-  jumpSpeed: 0
   faceDirection: 1
   jumpRayLength: 0.7
   jumpPoint:
@@ -454,7 +451,6 @@ MonoBehaviour:
   - {fileID: 1361759079718136206}
   downAndUpTime: 0.5
   time: 10
-  anim: {fileID: 0}
   Stairs_Raylength: 0
 --- !u!114 &1348396714
 MonoBehaviour:
@@ -481,7 +477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1361759080613547419}
   m_Layer: 10
-  m_Name: GameObject
+  m_Name: BlockedPoint
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

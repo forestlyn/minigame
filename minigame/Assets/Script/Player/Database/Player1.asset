@@ -18,6 +18,8 @@ MonoBehaviour:
   falling: 0
   isLying: 0
   up: 0
+  isDrawing: 1
+  canDrawOrNot: 1
   accumulate: 0
   speed: 6
   defaultJumpSpeed: 20

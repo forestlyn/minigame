@@ -13,6 +13,8 @@ public class Database : ScriptableObject
     [Header("铅笔")]
     public bool isLying;
     public bool up;
+    public bool isDrawing;
+    public bool canDrawOrNot;
     [Header("橡皮")]
     public bool accumulate;
 

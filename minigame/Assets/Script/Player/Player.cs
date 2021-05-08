@@ -77,12 +77,12 @@ public class Player : MonoBehaviour
     #region 跳跃
     protected void Jump(bool isOnPencilOrEraser)
     {
-        if (database.isLying)//倒下时禁止一切动作
+        if (database.isLying || database.isDrawing)//倒下，画线时禁止一切动作
             return;
 
         if (IsOnGround() || isOnPencilOrEraser && !database.jumping)
         {
-            if (Input.GetButton("JumpPlayer" + playerID))
+            if (Input.GetButtonDown("JumpPlayer" + playerID))
             {
                 rb.velocity = new Vector2(rb.velocity.x, database.jumpSpeed);
                 database.running = false;

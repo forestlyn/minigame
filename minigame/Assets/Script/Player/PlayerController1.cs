@@ -14,15 +14,14 @@ public class PlayerController1 : Player
     [Tooltip("倒下和起来用时")]
     [SerializeField] public float downAndUpTime = 0.5f;
     [SerializeField] public float time = 10f;
-    [SerializeField] private Animator anim;
     [Tooltip("检测楼梯射线长度")]
     [SerializeField] private float Stairs_Raylength;
+    
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Transform>();
-        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -32,41 +31,49 @@ public class PlayerController1 : Player
             HorizontalMove();
             Jump(IsOnPencilOrEraser(1));
         }
-        
+
         PencilDown();
-        if (database.isLying) Down();
-        else Up();
+            if (database.isLying) Down();
+            else Up();
+
+        if (database.canDrawOrNot && Input.GetKeyDown(KeyCode.Q))
+        {
+            database.isDrawing = !database.isDrawing;
+        }
     }
 
     #region 铅笔倒下或站起
     private void PencilDown()
     {
+        if (database.isDrawing)
+            return;
+
         if (Input.GetKeyDown(KeyCode.S) && !database.jumping && !database.falling)
         {
-            
+
             if (database.isLying)
             {
                 time = 0;
                 database.isLying = false;
                 database.up = true;
             }
-                
+
             else if (!database.isLying && !IsBlocked())
             {
                 database.isLying = true;
                 time = 0;
             }
-                
+
         }
-        
+
     }
     //倒下时判断是否有障碍
     private bool IsBlocked()
     {
         bool isBlocked = false;
-        for(int i = 0; i < rayPoints.Length; i++)
+        for (int i = 0; i < rayPoints.Length; i++)
         {
-            isBlocked = Physics2D.Raycast(rayPoints[i].transform.position, new Vector2(1 * faceDirection, 0f), pencilLength,1<<LayerMask.NameToLayer("Map"));
+            isBlocked = Physics2D.Raycast(rayPoints[i].transform.position, new Vector2(1 * faceDirection, 0f), pencilLength, 1 << LayerMask.NameToLayer("Map"));
             if (isBlocked)
                 return isBlocked;
         }
@@ -110,4 +117,28 @@ public class PlayerController1 : Player
         database.up = false;
     }
     #endregion
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("DrawArea"))
+        {
+            if (database.jumping || database.falling || database.isLying || database.up)
+            {
+                database.canDrawOrNot = false;
+            }
+            else
+            {
+                database.canDrawOrNot = true;
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("DrawArea"))
+        {
+            database.canDrawOrNot = false;
+            database.isDrawing = false;
+        }
+    }
 }
