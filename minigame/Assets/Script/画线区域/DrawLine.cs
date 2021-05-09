@@ -14,14 +14,15 @@ public class DrawLine : MonoBehaviour
     [Header("遮挡物")]
     [SerializeField] private Transform leftShelter;
     [SerializeField] private Transform rightShelter;
-    [SerializeField] private float leftPosition;
-    [SerializeField] private float rightPosition;
+    [SerializeField] public float leftPosition;
+    [SerializeField] public float rightPosition;
     [Header("线条贴图")]
     [SerializeField] private Transform lineSprite;
     [Header("单向平台")]
     [SerializeField] private GameObject oneWayPlatform_DrawArea;
     private GameObject oneWayPlatform;
     private int lineNum = 0;
+    private float platformSize;
 
 
     private float originScale;
@@ -55,8 +56,9 @@ public class DrawLine : MonoBehaviour
             database.isDrawing = !database.isDrawing;
             if (database.isDrawing && lineNum == 0)
             {
-                oneWayPlatform = Instantiate(oneWayPlatform_DrawArea, new Vector3(pencil.position.x, lineSprite.position.y-transform.position.y, 0f), Quaternion.identity, transform);
+                oneWayPlatform = Instantiate(oneWayPlatform_DrawArea, new Vector3(pencil.position.x, lineSprite.position.y, 0f), Quaternion.identity);
                 lineNum += 1;
+                platformSize = oneWayPlatform.GetComponent<OneWayPlatform_DrawArea>().size;
             }
         }
 
@@ -67,6 +69,7 @@ public class DrawLine : MonoBehaviour
             if (oneWayPlatform != null)
             {
                 oneWayPlatform.GetComponent<Transform>().localPosition = new Vector3(leftPosition, lineSprite.position.y, 0f);
+                oneWayPlatform.GetComponent<Transform>().localScale = new Vector3(Mathf.Max(rightPosition - leftPosition, 0) / platformSize* 1, oneWayPlatform.GetComponent<Transform>().localScale.y, oneWayPlatform.GetComponent<Transform>().localScale.z);
             }
         }
     }
