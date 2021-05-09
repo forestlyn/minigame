@@ -29,8 +29,15 @@ public class PlayerController2 : Player
     //蓄力跳跃
     protected void AccumulateJump()
     {
+        if (rb.velocity.y < 0)
+        {
+            database.accumulate = false;
+            return;
+        }
+
         if (!database.jumping && !database.falling)
         {
+            
             //蓄力
             if (Input.GetButton("Accumulate"))
             {
