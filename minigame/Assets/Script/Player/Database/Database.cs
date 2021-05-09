@@ -17,6 +17,7 @@ public class Database : ScriptableObject
     public bool canDrawOrNot;
     [Header("橡皮")]
     public bool accumulate;
+    public bool isWiping;
 
     [Header("角色参数")]
     [SerializeField] public float speed = 6;
