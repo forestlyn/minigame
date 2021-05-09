@@ -36,10 +36,7 @@ public class PlayerController1 : Player
             if (database.isLying) Down();
             else Up();
 
-        if (database.canDrawOrNot && Input.GetKeyDown(KeyCode.Q))
-        {
-            database.isDrawing = !database.isDrawing;
-        }
+        
     }
 
     #region 铅笔倒下或站起
@@ -118,6 +115,7 @@ public class PlayerController1 : Player
     }
     #endregion
 
+    #region 画线
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("DrawArea"))
@@ -141,4 +139,5 @@ public class PlayerController1 : Player
             database.isDrawing = false;
         }
     }
+    #endregion
 }
