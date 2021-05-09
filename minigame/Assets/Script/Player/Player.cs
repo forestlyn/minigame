@@ -50,6 +50,11 @@ public class Player : MonoBehaviour
             return;
         }
 
+        if (database.accumulate)
+        {
+            return;
+        }
+
         float moveDirection = Input.GetAxisRaw("HorizontalPlayer" + playerID);
         switch (moveDirection)
         {

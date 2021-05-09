@@ -18,8 +18,8 @@ MonoBehaviour:
   falling: 0
   isLying: 0
   up: 0
-  isDrawing: 1
-  canDrawOrNot: 1
+  isDrawing: 0
+  canDrawOrNot: 0
   accumulate: 0
   isWiping: 0
   speed: 6
