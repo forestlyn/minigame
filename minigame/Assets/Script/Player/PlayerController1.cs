@@ -52,12 +52,14 @@ public class PlayerController1 : Player
             {
                 time = 0;
                 database.isLying = false;
+                rb.bodyType = RigidbodyType2D.Dynamic;
                 database.up = true;
             }
 
             else if (!database.isLying && !IsBlocked())
             {
                 database.isLying = true;
+                rb.bodyType = RigidbodyType2D.Static;
                 time = 0;
             }
 

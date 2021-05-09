@@ -19,7 +19,7 @@ public class ErasableLine : MonoBehaviour
     private void Start()
     {
         length = upBoundary.position.y - downBoundary.position.y;
-        speed = 2 / length * transform.localScale.y;
+        speed = 4 / length * transform.localScale.y;
     }
 
     void Update()
@@ -35,7 +35,7 @@ public class ErasableLine : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Alpha0))
             {
-                database.isWiping = true;
+                database.isWiping = !database.isWiping;
             }
         }
         else database.isWiping = false;
