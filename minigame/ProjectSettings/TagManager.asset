@@ -59,6 +59,9 @@ TagManager:
   - name: Stair
     uniqueID: 951601117
     locked: 0
+  - name: Flower
+    uniqueID: 706426167
+    locked: 0
   - name: Frontground
     uniqueID: 2993331081
     locked: 0

@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
             isOnPencilOrEraser = Physics2D.Raycast(transform.position, downDirection, rayLength, 1 << LayerMask.NameToLayer("Eraser")) && Physics2D.Raycast(transform.position, downDirection, rayLength1, 1 << LayerMask.NameToLayer("Map"));
 
             if (isOnPencilOrEraser)
-                database.jumpSpeed = database.defaultJumpSpeed * 1.22f;
+                database.jumpSpeed = database.defaultJumpSpeed * 1.09f;
             else
                 database.jumpSpeed = database.defaultJumpSpeed;
         }
