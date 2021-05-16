@@ -42,6 +42,7 @@ public class PlayerController2 : Player
             if (Input.GetButton("Accumulate"))
             {
                 database.accumulate = true;
+                database.running = false;
                 if (accumulateTime < 1f)
                     accumulateTime += Time.deltaTime;
             }

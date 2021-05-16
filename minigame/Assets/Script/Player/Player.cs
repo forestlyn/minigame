@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
     [Space]
     [Tooltip("用于检测脚下是否有铅笔或橡皮")]
     [SerializeField] private float rayLength;
+    [Tooltip("用于检测在橡皮上时橡皮是否在地面上")]
+    [SerializeField] private float rayLength1;
 
     [Header("引用组件")]
     [Tooltip("玩家的刚体组件")]
@@ -52,6 +54,7 @@ public class Player : MonoBehaviour
 
         if (database.accumulate)
         {
+            rb.velocity = new Vector2(0, 0);
             return;
         }
 
@@ -121,7 +124,7 @@ public class Player : MonoBehaviour
         bool isOnPencilOrEraser;
         if (playerID == 1)
         {
-            isOnPencilOrEraser = Physics2D.Raycast(transform.position, downDirection, rayLength, 1 << LayerMask.NameToLayer("Eraser"));
+            isOnPencilOrEraser = Physics2D.Raycast(transform.position, downDirection, rayLength, 1 << LayerMask.NameToLayer("Eraser")) && Physics2D.Raycast(transform.position, downDirection, rayLength1, 1 << LayerMask.NameToLayer("Map"));
 
             if (isOnPencilOrEraser)
                 database.jumpSpeed = database.defaultJumpSpeed * 1.22f;
@@ -133,6 +136,7 @@ public class Player : MonoBehaviour
             isOnPencilOrEraser = Physics2D.Raycast(transform.position, downDirection, rayLength, 1 << LayerMask.NameToLayer("Pencil"));
         }
         Debug.DrawRay(transform.position, downDirection * rayLength, Color.black);
+        Debug.DrawRay(transform.position, downDirection * rayLength1, Color.black);
         return isOnPencilOrEraser;
     }
     #endregion
