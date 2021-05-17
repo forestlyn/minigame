@@ -136,7 +136,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: e8757bded6ba63c40a661a7c90dcf2d0, type: 3}
-  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -206,3 +206,5 @@ MonoBehaviour:
   size: 0
   left: {fileID: 2885296978440585104}
   right: {fileID: 2885296978224789652}
+  pencil: {fileID: 0}
+  _collider: {fileID: 2885296979968500402}
