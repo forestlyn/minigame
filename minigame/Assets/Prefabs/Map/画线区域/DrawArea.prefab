@@ -349,7 +349,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1754013697
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 18ebdb7e4c4ab76459e2ec07832d710e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -410,6 +410,7 @@ MonoBehaviour:
   lineSprite: {fileID: 8337751938746506059}
   oneWayPlatform_DrawArea: {fileID: 2885296979968500400, guid: efa92b257ff483043ad52022312043cd,
     type: 3}
+  used: 0
 --- !u!1 &8337751939966116729
 GameObject:
   m_ObjectHideFlags: 0

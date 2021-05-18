@@ -26,6 +26,9 @@ public class DrawLine : MonoBehaviour
 
 
     private float originScale;
+
+    [Tooltip("记录画框是否使用过")]
+    [SerializeField] private bool used;
     
 
     private void Start()
@@ -53,7 +56,11 @@ public class DrawLine : MonoBehaviour
         //画线
         if (database.canDrawOrNot && Input.GetKeyDown(KeyCode.Q))
         {
-            database.isDrawing = !database.isDrawing;
+            
+            if(!used)
+                database.isDrawing = !database.isDrawing;
+            if (!database.isDrawing)
+                used = true;
             if (database.isDrawing && lineNum == 0)
             {
                 oneWayPlatform = Instantiate(oneWayPlatform_DrawArea, new Vector3(pencil.position.x, lineSprite.position.y, 0f), Quaternion.identity);
@@ -62,7 +69,7 @@ public class DrawLine : MonoBehaviour
             }
         }
 
-        if (database.isDrawing)
+        if (database.isDrawing && !used)
         {
             leftShelter.localScale = new Vector3(Mathf.Max(0, leftPosition - leftBoundary.position.x) / size * originScale, leftBoundary.localScale.y, leftBoundary.localScale.z);
             rightShelter.localScale = new Vector3(Mathf.Max(0, rightBoundary.position.x - rightPosition) / size * originScale, rightBoundary.localScale.y, rightBoundary.localScale.z);
