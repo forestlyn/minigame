@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void Play()
     {
-        SceneManager.LoadSceneAsync("第一关");
+        SceneManager.LoadSceneAsync("选择关卡");
     }
 
     public void Exit()

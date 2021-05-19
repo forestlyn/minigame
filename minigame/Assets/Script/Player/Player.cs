@@ -108,6 +108,7 @@ public class Player : MonoBehaviour
         {
             isOnGround = Physics2D.Raycast(item.position, downDirection, jumpRayLength, 1 << LayerMask.NameToLayer("Map"));
             Debug.DrawRay(item.position, downDirection * jumpRayLength, Color.green);
+            if (isOnGround) return isOnGround;
         }
         return isOnGround;
     }
