@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
     #region 跳跃
     protected void Jump(bool isOnPencilOrEraser)
     {
-        if (database.isLying || database.isDrawing)//倒下，画线时禁止一切动作
+        if (database.isLying || database.isDrawing || database.accumulate)//倒下，画线时禁止一切动作
             return;
 
         if (IsOnGround() || isOnPencilOrEraser && !database.jumping)

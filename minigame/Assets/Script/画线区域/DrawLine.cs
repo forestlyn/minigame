@@ -27,6 +27,11 @@ public class DrawLine : MonoBehaviour
 
     private float originScale;
 
+    [Header("画框贴图")]
+    [SerializeField] private SpriteRenderer spriteRenderer;//画框贴图
+    private Color originColor;//贴图颜色
+    private float time = 1f;//画框消失时间
+
     [Tooltip("记录画框是否使用过")]
     [SerializeField] private bool used;
     
@@ -38,6 +43,8 @@ public class DrawLine : MonoBehaviour
         size = rightBoundary.position.x - leftBoundary.position.x;
         leftPosition = rightBoundary.position.x;
         rightPosition = leftBoundary.position.x;
+
+        originColor = spriteRenderer.color;
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -78,6 +85,27 @@ public class DrawLine : MonoBehaviour
                 oneWayPlatform.GetComponent<Transform>().localPosition = new Vector3(leftPosition, lineSprite.position.y, 0f);
                 oneWayPlatform.GetComponent<Transform>().localScale = new Vector3(Mathf.Max(rightPosition - leftPosition, 0) / platformSize* 1, oneWayPlatform.GetComponent<Transform>().localScale.y, oneWayPlatform.GetComponent<Transform>().localScale.z);
             }
+        }
+
+
+        if (used)
+        {
+            StartCoroutine(Disappear());
+        }
+    }
+
+    IEnumerator Disappear()
+    {
+        float change_Color = Time.deltaTime / time;
+        while (spriteRenderer.color.a > 0)
+        {
+            //改变透明度
+            if (spriteRenderer.color.a > change_Color)
+                spriteRenderer.color -= new Color(0, 0, 0, change_Color);
+            else
+                spriteRenderer.color = new Color(originColor.r, originColor.g, originColor.b, 0);
+
+            yield return new WaitForFixedUpdate();
         }
     }
 
