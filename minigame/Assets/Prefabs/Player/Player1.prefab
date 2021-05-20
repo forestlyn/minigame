@@ -351,6 +351,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   player: {fileID: 0}
   database: {fileID: 11400000, guid: 3a7be8ff590005c4cae62abddc62cf35, type: 2}
+  otherDatabase: {fileID: 11400000, guid: 27fd049d8885f9344916a452f1c937eb, type: 2}
   pencilLength: 3.5
   rayPoints:
   - {fileID: 1361759080613547416}

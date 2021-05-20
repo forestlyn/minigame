@@ -8,12 +8,6 @@ public class Player : MonoBehaviour
     [Tooltip("玩家序号  P1（铅笔）值为1  P2（橡皮）值为2")]
     [SerializeField] public int playerID;
     [Space]
-    //[Tooltip("移动速度")]
-    //[SerializeField] protected float speed;
-    //[Tooltip("跳跃速度（默认值）")]
-    //[SerializeField] protected float defaultJumpSpeed;
-    //[Tooltip("跳跃速度（真实值）")]
-    //[SerializeField] protected float jumpSpeed;
     [Space]
     [Tooltip("面向方向（1为右 -1为左）")]
     [SerializeField] protected int faceDirection = 1;
@@ -37,6 +31,7 @@ public class Player : MonoBehaviour
     [Space]
     [Tooltip("角色状态")]
     [SerializeField] protected Database database;
+    [SerializeField] protected Database otherDatabase;
     private void Start()
     {
         //database.speed = 6;
@@ -85,6 +80,9 @@ public class Player : MonoBehaviour
     #region 跳跃
     protected void Jump(bool isOnPencilOrEraser)
     {
+        if (playerID == 2 && !otherDatabase.isLying && isOnPencilOrEraser)
+            return;
+
         if (database.isLying || database.isDrawing || database.accumulate)//倒下，画线时禁止一切动作
             return;
 

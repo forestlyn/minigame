@@ -16,14 +16,19 @@ public class ErasableLine : MonoBehaviour
     [SerializeField] private float length;
     [SerializeField] private float speed;
 
+    private Vector3 position;
+
     private void Start()
     {
         length = upBoundary.position.y - downBoundary.position.y;
         speed = 4 / length * transform.localScale.y;
+        position = transform.position;
     }
 
     void Update()
     {
+        transform.position = position;
+
         IsWiping();
         Wipe();
     }

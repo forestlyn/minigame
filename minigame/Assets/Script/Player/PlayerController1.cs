@@ -26,6 +26,9 @@ public class PlayerController1 : Player
 
     private void Update()
     {
+        if (Time.timeScale == 0)
+            return;
+
         if (time == downAndUpTime)
         {
             HorizontalMove();

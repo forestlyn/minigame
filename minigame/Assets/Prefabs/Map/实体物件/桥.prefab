@@ -222,8 +222,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1301636215
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 361b8c215a1bcd84e94c5b03b543c353, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -272,7 +272,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 9.03, y: -0.3}
-  m_ConnectedAnchor: {x: 24.575386, y: 2.417664}
+  m_ConnectedAnchor: {x: 24.575384, y: 2.417664}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

@@ -21,6 +21,9 @@ public class PlayerController2 : Player
 
     void Update()
     {
+        if (Time.timeScale == 0)
+            return;
+
         HorizontalMove();
         Jump(IsOnPencilOrEraser(2));
         AccumulateJump();
@@ -29,11 +32,16 @@ public class PlayerController2 : Player
     //蓄力跳跃
     protected void AccumulateJump()
     {
+        if (playerID == 2 && !otherDatabase.isLying && IsOnPencilOrEraser(2))
+            return;
+
         if (rb.velocity.y < 0)
         {
             database.accumulate = false;
             return;
         }
+
+
 
         if (!database.jumping && !database.falling)
         {
