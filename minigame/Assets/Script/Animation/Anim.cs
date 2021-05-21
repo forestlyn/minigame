@@ -25,17 +25,18 @@ public class Anim : MonoBehaviour
         if (database.isLying)
             return;
 
-        if (rb.velocity.y < 0.05f)
+        if (rb.velocity.y < 0)
         {
             database.jumping = false;
             //database.falling = true;
         }
         else
         {
+            
             database.jumping = true;
         }
 
-        if (rb.velocity.y < -0.05f)
+        if (rb.velocity.y < 0)
         {
             database.falling = true;
         }
