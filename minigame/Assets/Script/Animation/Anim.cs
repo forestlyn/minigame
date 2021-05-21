@@ -7,6 +7,7 @@ public class Anim : MonoBehaviour
     [SerializeField] protected Database database;
     [SerializeField] protected Rigidbody2D rb;
     [SerializeField] protected Animator anim;
+    [SerializeField] protected float rayLength;
     protected void AnimSwitchForRun()
     {
         if (Mathf.Abs(rb.velocity.x) > 0.1f && Mathf.Abs(rb.velocity.y) < 0.1f)
@@ -41,6 +42,13 @@ public class Anim : MonoBehaviour
         else
         {
             database.falling = false;
+        }
+
+        bool isOnGround = Physics2D.Raycast(transform.position, Vector2.down, rayLength);
+        Debug.DrawRay(transform.position, Vector2.down * rayLength,Color.red);
+        if (isOnGround)
+        {
+            database.jumping = database.falling = false;
         }
     }
 }
