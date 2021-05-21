@@ -80,13 +80,13 @@ public class Player : MonoBehaviour
     #region 跳跃
     protected void Jump(bool isOnPencilOrEraser)
     {
-        if (playerID == 2 && !otherDatabase.isLying && isOnPencilOrEraser)
+        if (playerID == 2 && !otherDatabase.isLying && isOnPencilOrEraser)//橡皮站在直立的铅笔上
             return;
 
-        if (database.isLying || database.isDrawing || database.accumulate)//倒下，画线时禁止一切动作
+        if (database.isLying || database.isDrawing || database.accumulate)//倒下，画线，蓄力时禁止一切动作
             return;
 
-        if (IsOnGround() || isOnPencilOrEraser && !database.jumping)
+        if ((IsOnGround() || isOnPencilOrEraser) && (!database.jumping && !database.falling))
         {
             if (Input.GetButtonDown("JumpPlayer" + playerID))
             {

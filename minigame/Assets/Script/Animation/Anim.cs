@@ -24,12 +24,21 @@ public class Anim : MonoBehaviour
         if (database.isLying)
             return;
 
-        if (rb.velocity.y < 0)
+        if (rb.velocity.y < 0.05f)
         {
             database.jumping = false;
+            //database.falling = true;
+        }
+        else
+        {
+            database.jumping = true;
+        }
+
+        if (rb.velocity.y < -0.05f)
+        {
             database.falling = true;
         }
-        else if (Mathf.Abs(rb.velocity.y) < 0.05f)
+        else
         {
             database.falling = false;
         }
