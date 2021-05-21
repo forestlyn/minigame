@@ -20,7 +20,6 @@ public class Crouse : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("1");
         if (collision.transform.CompareTag("Pencil"))
         {
             show_Pencil = true;
@@ -32,7 +31,6 @@ public class Crouse : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("2");
         if (collision.transform.CompareTag("Pencil"))
         {
             show_Pencil = false;

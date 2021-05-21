@@ -22,31 +22,31 @@ public class Anim : MonoBehaviour
 
     protected void AnimSwitchForJumpAndFall(int playerID)
     {
+        
         if (database.isLying)
             return;
 
         if (rb.velocity.y < 0)
         {
             database.jumping = false;
-            //database.falling = true;
-        }
-        else
-        {
-            
-            database.jumping = true;
-        }
-
-        if (rb.velocity.y < 0)
-        {
             database.falling = true;
         }
-        else
+        else if (rb.velocity.y > 0)
         {
             database.falling = false;
-        }
+            database.jumping = true;
+        } 
+        
 
-        bool isOnGround = Physics2D.Raycast(transform.position, Vector2.down, rayLength);
-        Debug.DrawRay(transform.position, Vector2.down * rayLength,Color.red);
+        bool isOnGround = Physics2D.Raycast(transform.position, Vector2.down, rayLength,1<<LayerMask.NameToLayer("Map"));
+        if(!isOnGround && playerID == 1)
+        {
+            isOnGround = Physics2D.Raycast(transform.position, Vector2.down, rayLength, 1 << LayerMask.NameToLayer("Eraser"));
+        }else if(!isOnGround && playerID == 2)
+        {
+            isOnGround = Physics2D.Raycast(transform.position, Vector2.down, rayLength, 1 << LayerMask.NameToLayer("Pencil"));
+        }
+        Debug.DrawRay(transform.position + new Vector3(1,0,0), Vector2.down * rayLength,Color.red);
         if (isOnGround)
         {
             database.jumping = database.falling = false;

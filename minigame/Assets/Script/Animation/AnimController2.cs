@@ -11,7 +11,6 @@ public class AnimController2 : Anim
     }
     private void Update()
     {
-        Debug.Log("0");
         AnimSwitchForJumpAndFall(2);
 
         anim.SetBool("running", database.running);
