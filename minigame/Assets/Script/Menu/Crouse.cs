@@ -5,6 +5,7 @@ using UnityEngine;
 public class Crouse : MonoBehaviour
 {
     [SerializeField] private GameObject crouse;
+    [SerializeField] private GameObject theCrouse;
     [SerializeField]private bool show_Pencil;
     [SerializeField]private bool show_Eraser;
 
@@ -49,6 +50,6 @@ public class Crouse : MonoBehaviour
     }
     public void DestoryTheCrouse()
     {
-        Destroy(gameObject);
+        Destroy(theCrouse);
     }
 }
