@@ -23,6 +23,7 @@ public class AnimController1 : Anim
         anim.SetBool("falling", database.falling);
         anim.SetBool("lying", database.isLying);
         anim.SetBool("up", database.up);
+        anim.SetBool("drawing", database.isDrawing);
     }
     
 }
