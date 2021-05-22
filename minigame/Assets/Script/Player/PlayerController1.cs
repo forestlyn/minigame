@@ -48,6 +48,12 @@ public class PlayerController1 : Player
         if (database.isDrawing)
             return;
 
+        {//判断是否在花上
+            if (IsOnElevator())
+                return;
+        }
+        
+
         if (Input.GetKeyDown(KeyCode.S) && !database.jumping && !database.falling)
         {
 

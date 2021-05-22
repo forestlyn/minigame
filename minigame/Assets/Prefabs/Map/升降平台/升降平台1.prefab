@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1771822574842698013}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: "\u6700\u4F4E\u70B9"
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 1771822575636219878}
   - component: {fileID: 1771822575636219879}
   - component: {fileID: 1728711052}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: "\u5E73\u53F0"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1771822576184629075}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: "\u6700\u9AD8\u70B9"
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
@@ -324,6 +324,8 @@ GameObject:
   - component: {fileID: 1771822576640779929}
   - component: {fileID: 1771822576640779934}
   - component: {fileID: 1771822576640779935}
+  - component: {fileID: 2528636236784404134}
+  - component: {fileID: 2355007949223403624}
   m_Layer: 8
   m_Name: "\u6309\u94AE"
   m_TagString: Untagged
@@ -471,8 +473,40 @@ MonoBehaviour:
   upPosition: {fileID: 1771822576775911111}
   downPosition: {fileID: 1771822575330036488}
   moveSpeed: 0.65
-  rayLength: 0.13
+  rayLength: 0.3
   isTouched: 0
+--- !u!58 &2528636236784404134
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771822576640779906}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 4.084574, y: -0.5972583}
+  serializedVersion: 2
+  m_Radius: 2.3086636
+--- !u!58 &2355007949223403624
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771822576640779906}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -3.8550894, y: -0.55729735}
+  serializedVersion: 2
+  m_Radius: 2.3346367
 --- !u!1 &1771822576775911108
 GameObject:
   m_ObjectHideFlags: 0

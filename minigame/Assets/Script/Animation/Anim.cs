@@ -39,13 +39,20 @@ public class Anim : MonoBehaviour
         
 
         bool isOnGround = Physics2D.Raycast(transform.position, Vector2.down, rayLength,1<<LayerMask.NameToLayer("Map"));
+        if (!isOnGround)
+        {
+            isOnGround = Physics2D.Raycast(transform.position, Vector2.down, rayLength, 1 << LayerMask.NameToLayer("Elevator"));
+        }
+        
         if(!isOnGround && playerID == 1)
         {
             isOnGround = Physics2D.Raycast(transform.position, Vector2.down, rayLength, 1 << LayerMask.NameToLayer("Eraser"));
-        }else if(!isOnGround && playerID == 2)
+        }
+        else if(!isOnGround && playerID == 2)
         {
             isOnGround = Physics2D.Raycast(transform.position, Vector2.down, rayLength, 1 << LayerMask.NameToLayer("Pencil"));
         }
+         
         Debug.DrawRay(transform.position + new Vector3(1,0,0), Vector2.down * rayLength,Color.red);
         if (isOnGround)
         {

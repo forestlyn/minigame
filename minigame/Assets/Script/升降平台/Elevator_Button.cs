@@ -31,12 +31,12 @@ public class Elevator_Button : MonoBehaviour
         downPosition_Y = downPosition.position.y;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         isTouched = false;
         foreach (Transform item in rayPoints)
         {
-            Debug.DrawRay(item.position, up, Color.blue);
+            Debug.DrawRay(item.position, up*rayLength, Color.blue);
             if (!isTouched)
                 isTouched = Physics2D.Raycast(item.position, up, rayLength, 1 << LayerMask.NameToLayer("Pencil"));
             if (!isTouched)

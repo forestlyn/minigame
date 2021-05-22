@@ -220,7 +220,7 @@ MonoBehaviour:
   upPosition: {fileID: 128719111261798712}
   downPosition: {fileID: 128719111745388832}
   moveSpeed: 0.65
-  rayLength: 0.13
+  rayLength: 0.3
   isTouched: 0
 --- !u!1 &128719111389889419
 GameObject:
@@ -231,7 +231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 128719111389889416}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: "\u6700\u9AD8\u70B9"
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
@@ -412,7 +412,7 @@ MonoBehaviour:
   upPosition: {fileID: 128719111840367132}
   downPosition: {fileID: 128719113083346899}
   moveSpeed: 0.65
-  rayLength: 0.13
+  rayLength: 0.3
   isTouched: 0
 --- !u!1 &128719111745388835
 GameObject:
@@ -576,7 +576,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 128719112732282310}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: "\u6700\u4F4E\u70B9"
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
@@ -609,7 +609,7 @@ GameObject:
   - component: {fileID: 128719112986874685}
   - component: {fileID: 128719112986874684}
   - component: {fileID: 1828332149589695831}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: "\u5E73\u53F0"
   m_TagString: Untagged
   m_Icon: {fileID: 0}

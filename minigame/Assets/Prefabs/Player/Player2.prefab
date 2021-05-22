@@ -273,4 +273,4 @@ MonoBehaviour:
   database: {fileID: 11400000, guid: 27fd049d8885f9344916a452f1c937eb, type: 2}
   rb: {fileID: 0}
   anim: {fileID: 0}
-  rayLength: 0.3
+  rayLength: 0.85

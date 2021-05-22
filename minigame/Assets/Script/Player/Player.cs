@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
         if (database.isLying || database.isDrawing || database.accumulate)//倒下，画线，蓄力时禁止一切动作
             return;
 
-        if ((IsOnGround() || isOnPencilOrEraser) && (!database.jumping && !database.falling))
+        if ((IsOnGround() || isOnPencilOrEraser || IsOnElevator()) && (!database.jumping && !database.falling))
         {
             if (Input.GetButtonDown("JumpPlayer" + playerID))
             {
@@ -111,6 +111,19 @@ public class Player : MonoBehaviour
         return isOnGround;
     }
 
+    protected bool IsOnElevator()
+    {
+        bool isOnElevator = false;
+        Vector2 downDirection = new Vector2(0, -1);
+        foreach (Transform item in jumpPoint)
+        {
+            isOnElevator = Physics2D.Raycast(item.position, downDirection, jumpRayLength, 1 << LayerMask.NameToLayer("Elevator"));
+            Debug.DrawRay(item.position, downDirection * jumpRayLength, Color.green);
+            if (isOnElevator) return isOnElevator;
+        }
+        return isOnElevator;
+    }
+
     protected bool IsOnPencilOrEraser(int playerID)
     {//铅笔playerID为1 橡皮playerID为2 
         if (playerID != 1 && playerID != 2)
@@ -123,7 +136,7 @@ public class Player : MonoBehaviour
         bool isOnPencilOrEraser;
         if (playerID == 1)
         {
-            isOnPencilOrEraser = Physics2D.Raycast(transform.position, downDirection, rayLength, 1 << LayerMask.NameToLayer("Eraser")) && Physics2D.Raycast(transform.position, downDirection, rayLength1, 1 << LayerMask.NameToLayer("Map"));
+            isOnPencilOrEraser = Physics2D.Raycast(transform.position, downDirection, rayLength, 1 << LayerMask.NameToLayer("Eraser")) && Physics2D.Raycast(transform.position, downDirection, rayLength1, 1 << LayerMask.NameToLayer("Map"));//保证不能腾空跳跃
 
             if (isOnPencilOrEraser)
                 database.jumpSpeed = database.defaultJumpSpeed * 1.2f;
