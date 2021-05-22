@@ -26,16 +26,20 @@ public class Anim : MonoBehaviour
         if (database.isLying)
             return;
 
-        if (rb.velocity.y < 0)
+        if (rb.velocity.y < -0.0001f)
         {
             database.jumping = false;
             database.falling = true;
         }
-        else if (rb.velocity.y > 0)
+        else if (rb.velocity.y > 0.0001f)
         {
             database.falling = false;
             database.jumping = true;
-        } 
+        }
+        else
+        {
+            database.jumping = database.falling = false; 
+        }
         
 
         bool isOnGround = Physics2D.Raycast(transform.position, Vector2.down, rayLength,1<<LayerMask.NameToLayer("Map"));

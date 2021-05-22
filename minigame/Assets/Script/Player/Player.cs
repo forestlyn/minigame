@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 
     [Header("射线")]
     [Tooltip("用于检测是否在地面上")]
-    [SerializeField] private float jumpRayLength = 0.5f;
+    [SerializeField] protected float jumpRayLength = 0.5f;
     [Tooltip("跳跃判定点")]
     [SerializeField] private List<Transform> jumpPoint;
     [Space]
@@ -43,13 +43,13 @@ public class Player : MonoBehaviour
     {
         if (database.isLying)
         {
-            rb.velocity = new Vector2(0, 0);
+            rb.velocity = new Vector2(0, rb.velocity.y);
             return;
         }
 
         if (database.accumulate)
         {
-            rb.velocity = new Vector2(0, 0);
+            rb.velocity = new Vector2(0, rb.velocity.y);
             return;
         }
 
