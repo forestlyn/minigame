@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController1 : Player
 {
+
     [Header("射线相关")]
     [Tooltip("检测前方是否有障碍物")]
     [SerializeField] private float pencilLength;
@@ -38,8 +39,6 @@ public class PlayerController1 : Player
         PencilDown();
             if (database.isLying) Down();
             else Up();
-
-        
     }
 
     #region 铅笔倒下或站起

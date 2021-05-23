@@ -33,6 +33,9 @@ public class Player : MonoBehaviour
     [SerializeField] protected Database database;
     [SerializeField] protected Database otherDatabase;
 
+    [Header("音效")]
+    [SerializeField] protected AudioSource jump;
+
     private void Start()
     {
         //database.speed = 6;
@@ -92,6 +95,8 @@ public class Player : MonoBehaviour
         {
             if (Input.GetButtonDown("JumpPlayer" + playerID))
             {
+                jump.Play();
+
                 rb.velocity = new Vector2(rb.velocity.x, database.jumpSpeed);
                 database.running = false;
                 database.idle = false;

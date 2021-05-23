@@ -12,6 +12,8 @@ public class Stair_UpTrigger : MonoBehaviour
     [SerializeField] private bool isUsing;
     [SerializeField] private Database database;
 
+    [SerializeField] private AudioSource audioSource;
+
     private void Start()
     {
         pencil = GameObject.FindGameObjectWithTag("Pencil").transform;
@@ -41,6 +43,7 @@ public class Stair_UpTrigger : MonoBehaviour
             {
                 //collision.transform.position = upPosition.position;
                 isUsing = true;
+                audioSource.Play();
             }
     }
 

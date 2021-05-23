@@ -23,6 +23,8 @@ public class DrawLine : MonoBehaviour
     private GameObject oneWayPlatform;
     private int lineNum = 0;
     private float platformSize;
+    [Header("音效")]
+    [SerializeField] private AudioSource audioSource;
 
 
     private float originScale;
@@ -63,9 +65,13 @@ public class DrawLine : MonoBehaviour
         //画线
         if (database.canDrawOrNot && Input.GetKeyDown(KeyCode.Q))
         {
-            
-            if(!used)
+
+            if (!used)
+            {
                 database.isDrawing = !database.isDrawing;
+                audioSource.Play();
+            }
+                
             if (!database.isDrawing)
                 used = true;
             if (database.isDrawing && lineNum == 0)
@@ -90,6 +96,7 @@ public class DrawLine : MonoBehaviour
 
         if (used)
         {
+            audioSource.Stop();
             StartCoroutine(Disappear());
         }
     }

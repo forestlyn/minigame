@@ -60,8 +60,6 @@ public class PlayerController2 : Player
             //跳跃
             if (Input.GetButtonUp("Accumulate") && (Mathf.Abs(rb.velocity.y) < 0.05f || Physics2D.Raycast(transform.position, Vector3.down, jumpRayLength, 1 << LayerMask.NameToLayer("Elevator"))))
             {
-                
-                Debug.Log("2");
                 database.accumulate = false;
                 database.jumping = true;
                 float _ratio = (Mathf.Sqrt(ratio) - 0.8f) * accumulateTime / maxAccumulateTime;

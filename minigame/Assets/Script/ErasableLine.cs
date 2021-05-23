@@ -15,6 +15,8 @@ public class ErasableLine : MonoBehaviour
     [SerializeField] private Transform downBoundary;
     [SerializeField] private float length;
     [SerializeField] private float speed;
+    [Header("音效")]
+    [SerializeField] private AudioSource audioSource;
 
     private Vector3 position;
 
@@ -41,9 +43,17 @@ public class ErasableLine : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha0))
             {
                 database.isWiping = !database.isWiping;
+                if (database.isWiping)
+                    audioSource.Play();
+                else
+                    audioSource.Stop();
             }
         }
-        else database.isWiping = false;
+        else
+        {
+            database.isWiping = false;
+            audioSource.Stop();
+        }
         Debug.DrawRay(rayPoint.position, down * rayLength, Color.black);
     }
 
@@ -52,6 +62,11 @@ public class ErasableLine : MonoBehaviour
         if (database.isWiping)
         {
             transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y - speed * Time.deltaTime >= 0 ? transform.localScale.y - speed * Time.deltaTime : 0, transform.localScale.z);
+            if(transform.localScale.y == 0)
+            {
+                audioSource.Stop();
+                database.isWiping = false;
+            }
         }
 
     }

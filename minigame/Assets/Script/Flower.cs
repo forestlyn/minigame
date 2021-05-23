@@ -8,17 +8,20 @@ public class Flower : MonoBehaviour
     [SerializeField] private Transform finalPosition;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float time = 2f;
+    [SerializeField] private AudioSource audioSource;
 
     private Color originColor;
     void Start()
     {
         originColor = spriteRenderer.color;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Pencil") || collision.CompareTag("Eraser"))
         {
+            audioSource.Play();
             StartCoroutine(GetFlower());
         }
     }

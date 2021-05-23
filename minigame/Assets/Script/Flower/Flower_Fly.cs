@@ -10,6 +10,7 @@ public class Flower_Fly : MonoBehaviour
     [SerializeField] private GameObject flower_CannotFly;
     [SerializeField] private Transform[] move_Flower;
     [SerializeField] private Transform[] static_Flower;
+    [SerializeField] private AudioSource audioSource;
 
     [SerializeField] public float time;
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -22,12 +23,14 @@ public class Flower_Fly : MonoBehaviour
     void Start()
     {
         originColor = spriteRenderer.color;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if ((collision.CompareTag("Pencil") || collision.CompareTag("Eraser")) && !createFlower)
         {
+            audioSource.Play();
             CreateFlower();
             StartCoroutine(Destroy());
         }
