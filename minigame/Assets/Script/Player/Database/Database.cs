@@ -24,4 +24,5 @@ public class Database : ScriptableObject
     [SerializeField] public float defaultJumpSpeed = 20;
     [SerializeField] public float jumpSpeed;
 
+    
 }

@@ -32,10 +32,12 @@ public class Player : MonoBehaviour
     [Tooltip("角色状态")]
     [SerializeField] protected Database database;
     [SerializeField] protected Database otherDatabase;
+
     private void Start()
     {
         //database.speed = 6;
         database.jumpSpeed = database.defaultJumpSpeed;
+        database.isLying = false;
     }
 
     //水平移动

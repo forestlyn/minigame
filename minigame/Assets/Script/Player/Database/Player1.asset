@@ -15,7 +15,7 @@ MonoBehaviour:
   idle: 0
   running: 0
   jumping: 0
-  falling: 1
+  falling: 0
   isLying: 0
   up: 0
   isDrawing: 0
