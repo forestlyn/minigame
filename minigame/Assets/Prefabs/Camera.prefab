@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2712822334060231431}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.9403715, y: -6.839713, z: -3.4855413}
+  m_LocalPosition: {x: -6.940091, y: -6.607995, z: -3.4855413}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4108634620602119336}
@@ -205,7 +205,8 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   defaultSize: 13
   maxSize: 25
-  changeDistance: 0
+  speed: 4.59
+  rate: 1.81
   Target: {fileID: 0}
 --- !u!114 &2712822334131037717
 MonoBehaviour:

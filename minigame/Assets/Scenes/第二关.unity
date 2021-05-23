@@ -149,6 +149,16 @@ PrefabInstance:
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 2011866313}
+    - target: {fileID: 2712822334131037802, guid: 771c583821b85fa47a87a2a3f31ad382,
+        type: 3}
+      propertyPath: rate
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2712822334131037802, guid: 771c583821b85fa47a87a2a3f31ad382,
+        type: 3}
+      propertyPath: speed
+      value: 5.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3393325787980209691, guid: 771c583821b85fa47a87a2a3f31ad382,
         type: 3}
       propertyPath: m_Name

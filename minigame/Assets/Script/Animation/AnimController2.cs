@@ -17,5 +17,6 @@ public class AnimController2 : Anim
         anim.SetBool("jumping", database.jumping);
         anim.SetBool("falling", database.falling);
         anim.SetBool("accumulating", database.accumulate);
+        anim.SetBool("wiping", database.isWiping);
     }
 }
