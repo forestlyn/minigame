@@ -23,6 +23,7 @@ public class PlayerController1 : Player
     {
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Transform>();
+        database.canDrawOrNot = false;
     }
 
     private void Update()

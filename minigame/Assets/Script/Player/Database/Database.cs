@@ -15,6 +15,7 @@ public class Database : ScriptableObject
     public bool up;
     public bool isDrawing;
     public bool canDrawOrNot;
+
     [Header("橡皮")]
     public bool accumulate;
     public bool isWiping;

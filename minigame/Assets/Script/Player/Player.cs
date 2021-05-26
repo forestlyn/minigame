@@ -96,7 +96,6 @@ public class Player : MonoBehaviour
             if (Input.GetButtonDown("JumpPlayer" + playerID))
             {
                 jump.Play();
-
                 rb.velocity = new Vector2(rb.velocity.x, database.jumpSpeed);
                 database.running = false;
                 database.idle = false;

@@ -93,9 +93,8 @@ public class ControlCamera : MonoBehaviour
 
     void Follow()
     {
-        //transform.position = (Players1.position + Players2.position) / 2 + new Vector3(0, 0, -10);
-        
-        Vector3 dir = ((Players1.position + Players2.position) / 2 - transform.position - new Vector3(0,0,10)).normalized;
-        transform.position = transform.position + dir * (speed * Time.deltaTime);
+        //transform.position = (Players1.position + Players2.position) / 2 + new Vector3(0, 0, -10);        
+        Vector3 dir = ((Players1.position + Players2.position) / 2 - transform.position - new Vector3(0,0,10));
+        transform.position = transform.position + dir * (speed * Time.fixedDeltaTime);
     }
 }

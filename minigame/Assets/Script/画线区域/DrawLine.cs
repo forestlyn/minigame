@@ -27,7 +27,8 @@ public class DrawLine : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
 
 
-    private float originScale;
+    private float originScaleX;
+    private float originScaleY;
 
     [Header("画框贴图")]
     [SerializeField] private SpriteRenderer spriteRenderer;//画框贴图
@@ -36,12 +37,14 @@ public class DrawLine : MonoBehaviour
 
     [Tooltip("记录画框是否使用过")]
     [SerializeField] private bool used;
+    [SerializeField] private bool isUsing;
     
 
     private void Start()
     {
         pencil = GameObject.FindGameObjectWithTag("Pencil").transform;
-        originScale = leftShelter.localScale.x;
+        originScaleX = leftShelter.localScale.x;
+        originScaleY = leftShelter.localScale.y;
         size = rightBoundary.position.x - leftBoundary.position.x;
         leftPosition = rightBoundary.position.x;
         rightPosition = leftBoundary.position.x;
@@ -68,6 +71,7 @@ public class DrawLine : MonoBehaviour
 
             if (!used)
             {
+                isUsing = true;
                 database.isDrawing = !database.isDrawing;
                 audioSource.Play();
             }
@@ -84,8 +88,8 @@ public class DrawLine : MonoBehaviour
 
         if (database.isDrawing && !used)
         {
-            leftShelter.localScale = new Vector3(Mathf.Max(0, leftPosition - leftBoundary.position.x) / size * originScale, leftBoundary.localScale.y, leftBoundary.localScale.z);
-            rightShelter.localScale = new Vector3(Mathf.Max(0, rightBoundary.position.x - rightPosition) / size * originScale, rightBoundary.localScale.y, rightBoundary.localScale.z);
+            leftShelter.localScale = new Vector3(Mathf.Max(0, leftPosition - leftBoundary.position.x) / size * originScaleX, originScaleY, leftBoundary.localScale.z);
+            rightShelter.localScale = new Vector3(Mathf.Max(0, rightBoundary.position.x - rightPosition) / size * originScaleX, originScaleY, rightBoundary.localScale.z);
             if (oneWayPlatform != null)
             {
                 oneWayPlatform.GetComponent<Transform>().localPosition = new Vector3(leftPosition, lineSprite.position.y, 0f);
@@ -93,12 +97,13 @@ public class DrawLine : MonoBehaviour
             }
         }
 
-
-        if (used)
+        if (isUsing && !database.isDrawing)
         {
+            used = true;
             audioSource.Stop();
             StartCoroutine(Disappear());
         }
+        
     }
 
     IEnumerator Disappear()
