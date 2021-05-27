@@ -18,6 +18,9 @@ public class Flower_Fly : MonoBehaviour
     [SerializeField] private Transform finalPosition;
     [SerializeField] private bool createFlower;
 
+    [Header("其他组件")]
+    [SerializeField] private GameObject ChangeFace;
+
     void Start()
     {
         originColor = spriteRenderer.color;
@@ -28,6 +31,10 @@ public class Flower_Fly : MonoBehaviour
     {
         if ((collision.CompareTag("Pencil") || collision.CompareTag("Eraser")) && !createFlower)
         {
+            if (ChangeFace)
+            {
+                ChangeFace.GetComponent<FaceChange>()._smile = true;
+            }
             audioSource.Play();
             CreateFlower();
             StartCoroutine(Destroy());

@@ -7,7 +7,10 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject pause;
     [SerializeField] GameObject pauseButton;
-    // Start is called before the first frame update
+    private void Start()
+    {
+        pause.SetActive(false);
+    }
     public void Pause()
     {
         Time.timeScale = 0;

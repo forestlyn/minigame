@@ -15,8 +15,4 @@ public class ChooseLevel : MonoBehaviour
         SceneManager.LoadSceneAsync("第二关");
     }
 
-    public void Play3()
-    {
-        SceneManager.LoadSceneAsync("第三关");
-    }
 }

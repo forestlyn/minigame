@@ -10,6 +10,10 @@ public class Crouse : MonoBehaviour
     [SerializeField]private bool show_Eraser;
     [SerializeField] private AudioSource clik;
 
+    private void Start()
+    {
+        crouse.SetActive(false);
+    }
     private void Update()
     {
         if((show_Eraser || show_Pencil))
