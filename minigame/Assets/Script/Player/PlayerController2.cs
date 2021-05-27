@@ -48,7 +48,8 @@ public class PlayerController2 : Player
 
 
         if (!database.jumping && !database.falling)
-        {Debug.DrawRay(transform.position, Vector3.down * jumpRayLength, Color.green);
+        {
+            //Debug.DrawRay(transform.position, Vector3.down * jumpRayLength, Color.green);
             //蓄力
             if (Input.GetButton("Accumulate"))
             {

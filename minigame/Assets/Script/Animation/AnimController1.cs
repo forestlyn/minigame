@@ -24,6 +24,15 @@ public class AnimController1 : Anim
         anim.SetBool("lying", database.isLying);
         anim.SetBool("up", database.up);
         anim.SetBool("drawing", database.isDrawing);
+        if (database.falling)
+        {
+            if (Physics2D.Raycast(transform.position, new Vector2(0, -1), rayLength1, 1 << LayerMask.NameToLayer("Map")))
+            {
+                //Debug.Log("11");
+                fall.Play();
+            }
+        }
+        Debug.DrawRay(transform.position, new Vector2(0, -1) * rayLength1, Color.black);
     }
     
 }

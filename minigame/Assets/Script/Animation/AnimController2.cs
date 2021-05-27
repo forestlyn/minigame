@@ -18,5 +18,14 @@ public class AnimController2 : Anim
         anim.SetBool("falling", database.falling);
         anim.SetBool("accumulating", database.accumulate);
         anim.SetBool("wiping", database.isWiping);
+        if (database.falling)
+        {
+            if (Physics2D.Raycast(transform.position, new Vector2(0, -1), rayLength1, 1 << LayerMask.NameToLayer("Map")))
+            {
+                fall.Play();
+            }
+        }
+        Debug.DrawRay(transform.position, new Vector2(0, -1) * rayLength1, Color.black);
     }
+    
 }

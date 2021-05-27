@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 
     [Header("射线")]
     [Tooltip("用于检测是否在地面上")]
-    [SerializeField] protected float jumpRayLength = 0.5f;
+    [SerializeField] protected float jumpRayLength;
     [Tooltip("跳跃判定点")]
     [SerializeField] private List<Transform> jumpPoint;
     [Space]
@@ -124,7 +124,7 @@ public class Player : MonoBehaviour
         foreach (Transform item in jumpPoint)
         {
             isOnElevator = Physics2D.Raycast(item.position, downDirection, jumpRayLength, 1 << LayerMask.NameToLayer("Elevator"));
-            Debug.DrawRay(item.position, downDirection * jumpRayLength, Color.green);
+            //Debug.DrawRay(item.position, downDirection * jumpRayLength, Color.green);
             if (isOnElevator) return isOnElevator;
         }
         return isOnElevator;
@@ -153,8 +153,8 @@ public class Player : MonoBehaviour
         {
             isOnPencilOrEraser = Physics2D.Raycast(transform.position, downDirection, rayLength, 1 << LayerMask.NameToLayer("Pencil"));
         }
-        Debug.DrawRay(transform.position, downDirection * rayLength, Color.black);
-        Debug.DrawRay(transform.position, downDirection * rayLength1, Color.black);
+        //Debug.DrawRay(transform.position, downDirection * rayLength, Color.black);
+        //Debug.DrawRay(transform.position, downDirection * rayLength1, Color.black);
         return isOnPencilOrEraser;
     }
     #endregion

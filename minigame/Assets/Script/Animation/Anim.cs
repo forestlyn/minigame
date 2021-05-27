@@ -8,6 +8,8 @@ public class Anim : MonoBehaviour
     [SerializeField] protected Rigidbody2D rb;
     [SerializeField] protected Animator anim;
     [SerializeField] protected float rayLength;
+    [SerializeField] protected float rayLength1;
+    [SerializeField] protected AudioSource fall;
     protected void AnimSwitchForRun()
     {
         if (Mathf.Abs(rb.velocity.x) > 0.1f && Mathf.Abs(rb.velocity.y) < 0.1f)
@@ -51,16 +53,19 @@ public class Anim : MonoBehaviour
         if(!isOnGround && playerID == 1)
         {
             isOnGround = Physics2D.Raycast(transform.position, Vector2.down, rayLength, 1 << LayerMask.NameToLayer("Eraser"));
+            
         }
         else if(!isOnGround && playerID == 2)
         {
             isOnGround = Physics2D.Raycast(transform.position, Vector2.down, rayLength, 1 << LayerMask.NameToLayer("Pencil"));
+            
         }
          
-        Debug.DrawRay(transform.position + new Vector3(1,0,0), Vector2.down * rayLength,Color.red);
+        //Debug.DrawRay(transform.position + new Vector3(1,0,0), Vector2.down * rayLength,Color.red);
         if (isOnGround)
         {
             database.jumping = database.falling = false;
         }
+        
     }
 }
