@@ -8,6 +8,7 @@ public class Crouse : MonoBehaviour
     [SerializeField] private GameObject theCrouse;
     [SerializeField]private bool show_Pencil;
     [SerializeField]private bool show_Eraser;
+    [SerializeField] private AudioSource clik;
 
     private void Update()
     {
@@ -41,13 +42,17 @@ public class Crouse : MonoBehaviour
         }
     }
 
+   
     public void ContinueGame()
     {
+        clik.Play();
         Time.timeScale = 1;
+        
         DestoryTheCrouse();
     }
     public void DestoryTheCrouse()
     {
+        Debug.Log("1");
         Destroy(theCrouse);
     }
 }
