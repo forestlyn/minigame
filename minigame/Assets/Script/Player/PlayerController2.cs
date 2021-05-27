@@ -17,6 +17,7 @@ public class PlayerController2 : Player
     {
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Transform>();
+        //transform.position = playerOriginPosition.position;
     }
 
     void Update()

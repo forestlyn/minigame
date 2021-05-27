@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     [SerializeField] protected Rigidbody2D rb;
     [Tooltip("玩家的transform组件")]
     [SerializeField] protected Transform player;
+    //[SerializeField] protected Transform playerOriginPosition;
     [Space]
     [Tooltip("角色状态")]
     [SerializeField] protected Database database;

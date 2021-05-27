@@ -9,6 +9,7 @@ public class Flower : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float time = 2f;
     [SerializeField] private AudioSource audioSource;
+    bool isUsed = false;
 
     private Color originColor;
     void Start()
@@ -21,7 +22,12 @@ public class Flower : MonoBehaviour
     {
         if(collision.CompareTag("Pencil") || collision.CompareTag("Eraser"))
         {
-            audioSource.Play();
+            if (!isUsed)
+            {
+                audioSource.Play();
+                isUsed = true;
+            }
+            
             StartCoroutine(GetFlower());
         }
     }

@@ -18,8 +18,6 @@ public class Flower_Fly : MonoBehaviour
     [SerializeField] private Transform finalPosition;
     [SerializeField] private bool createFlower;
 
-
-
     void Start()
     {
         originColor = spriteRenderer.color;

@@ -10,6 +10,8 @@ public class Anim : MonoBehaviour
     [SerializeField] protected float rayLength;
     [SerializeField] protected float rayLength1;
     [SerializeField] protected AudioSource fall;
+    float time = 0;
+    bool isBoardcast = false;
     protected void AnimSwitchForRun()
     {
         if (Mathf.Abs(rb.velocity.x) > 0.1f && Mathf.Abs(rb.velocity.y) < 0.1f)
@@ -67,5 +69,35 @@ public class Anim : MonoBehaviour
             database.jumping = database.falling = false;
         }
         
+    }
+
+    protected void TouchGround()
+    {
+        if (isBoardcast)
+        {
+            time += Time.deltaTime;
+        }
+        if (time > 0.5f)
+        {
+            isBoardcast = false;
+            time = 0f;
+        }
+
+        if (database.falling)
+        {
+            bool touchGround = false;
+            touchGround = Physics2D.Raycast(transform.position, new Vector2(0, -1), rayLength1, 1 << LayerMask.NameToLayer("Map"));
+            if(!touchGround)
+               touchGround = Physics2D.Raycast(transform.position, new Vector2(0, -1), rayLength1, 1 << LayerMask.NameToLayer("Elevator"));
+            
+            if (touchGround)
+                if(!isBoardcast && rb.velocity.y < -3f)
+                {
+                    fall.Play();
+                    isBoardcast = true;
+                }
+                
+        }
+        Debug.DrawRay(transform.position, new Vector2(0, -1) * rayLength1, Color.black);
     }
 }
