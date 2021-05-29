@@ -781,10 +781,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1665165405, guid: 5ecec57e64bf5ba48bc7da461e149b1a, type: 3}
-      propertyPath: rayLength1
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 3125341954188474473, guid: 5ecec57e64bf5ba48bc7da461e149b1a,
         type: 3}
       propertyPath: m_RootOrder
@@ -2458,10 +2454,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1348396714, guid: 4cc1687481e3ae44da4bc94dabfe7a47, type: 3}
-      propertyPath: rayLength1
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1361759080427385205, guid: 4cc1687481e3ae44da4bc94dabfe7a47,
         type: 3}
       propertyPath: m_RootOrder
@@ -3704,7 +3696,7 @@ PrefabInstance:
     - target: {fileID: 5558095349296150763, guid: fed85d89bf30d3d4387bbff6331b7d29,
         type: 3}
       propertyPath: m_Size.y
-      value: 23.290356
+      value: 33.062786
       objectReference: {fileID: 0}
     - target: {fileID: 5558095349296150763, guid: fed85d89bf30d3d4387bbff6331b7d29,
         type: 3}
@@ -3714,7 +3706,7 @@ PrefabInstance:
     - target: {fileID: 5558095349296150763, guid: fed85d89bf30d3d4387bbff6331b7d29,
         type: 3}
       propertyPath: m_Offset.y
-      value: -6.446739
+      value: -8.075474
       objectReference: {fileID: 0}
     - target: {fileID: 5558095349420946713, guid: fed85d89bf30d3d4387bbff6331b7d29,
         type: 3}
