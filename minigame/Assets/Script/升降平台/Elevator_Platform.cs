@@ -12,9 +12,11 @@ public class Elevator_Platform : MonoBehaviour
     [SerializeField] public bool isTouched;
     [SerializeField] public bool isTouched1 = false;
     [SerializeField] public bool isTouched2 = false;
+    [SerializeField] private AudioSource audioSource;
 
     float highPosition_Y;
     float lowPosition_Y;
+    bool isMoving = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,23 +28,15 @@ public class Elevator_Platform : MonoBehaviour
     void Update()
     {
         if(isTouched1 || isTouched2)
-        {
             isTouched = true;
-        }
         else
-        {
             isTouched = false;
-        }
 
 
         if (isTouched)
-        {
             PlatformUp();
-        }
         else
-        {
             PlatformDown();
-        }
     }
 
     private void PlatformUp()
@@ -50,7 +44,17 @@ public class Elevator_Platform : MonoBehaviour
         if (transform.position.y <= highPosition_Y)
         {
             transform.position += new Vector3(0, 5 * moveSpeed * Time.deltaTime, 0);
+            if (isMoving == false)
+                audioSource.Play();
+            isMoving = true;
         }
+        else
+        {
+            if (isMoving == true)
+                audioSource.Stop();
+            isMoving = false;
+        }
+            
     }
 
     private void PlatformDown()
@@ -58,6 +62,15 @@ public class Elevator_Platform : MonoBehaviour
         if (transform.position.y >= lowPosition_Y)
         {
             transform.position += new Vector3(0, -5 * moveSpeed * Time.deltaTime, 0);
+            if (isMoving == false)
+                audioSource.Play();
+            isMoving = true;
+        }
+        else
+        {
+            if (isMoving == true)
+                audioSource.Stop();
+            isMoving = false;
         }
     }
 }

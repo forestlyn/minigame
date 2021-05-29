@@ -18,8 +18,10 @@ public class Flower_Fly : MonoBehaviour
     [SerializeField] private Transform finalPosition;
     [SerializeField] private bool createFlower;
 
-    [Header("其他组件")]
-    [SerializeField] private GameObject ChangeFace;
+    [Header("变脸组件")]
+    [SerializeField] private FaceController faceController;
+    [SerializeField] private SpriteRenderer cryColor;
+    bool colorChanged = false;
 
     void Start()
     {
@@ -27,14 +29,50 @@ public class Flower_Fly : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    #region 变色
+    private void Update()
+    {
+        if (!colorChanged && faceController.cry)
+        {
+            StartCoroutine(ChangeColor());
+            colorChanged = true;
+        }
+    }
+
+    IEnumerator  ChangeColor()
+    {
+        float change_Color = Time.deltaTime;
+
+        while (spriteRenderer.color.a > 0)
+        {
+            if (spriteRenderer.color.a > change_Color)
+            {
+                spriteRenderer.color -= new Color(0, 0, 0, change_Color);
+                cryColor.color += new Color(0, 0, 0, change_Color);
+            }
+
+            else
+            {
+                spriteRenderer.color = new Color(originColor.r, originColor.g, originColor.b, 0);
+                cryColor.color = new Color(cryColor.color.r, cryColor.color.g, cryColor.color.b, 1);
+            }
+            yield return new WaitForFixedUpdate();
+        }
+        
+    }
+    #endregion
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if ((collision.CompareTag("Pencil") || collision.CompareTag("Eraser")) && !createFlower)
         {
-            if (ChangeFace)
+            if (faceController && !faceController.isUsed)
             {
-                ChangeFace.GetComponent<FaceChange>()._smile = true;
+                faceController.smile = true;
             }
+
+
             audioSource.Play();
             CreateFlower();
             StartCoroutine(Destroy());
@@ -45,7 +83,6 @@ public class Flower_Fly : MonoBehaviour
         }
         
     }
-
 
     IEnumerator Destroy()
     {

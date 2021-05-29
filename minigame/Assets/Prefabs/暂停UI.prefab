@@ -996,3 +996,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pause: {fileID: 2816439366530008912}
   pauseButton: {fileID: 4404691929802173648}
+  audioSource: {fileID: 6539967969673695433, guid: 9be4eb37a8f2fc6478f840c5d8280b94,
+    type: 3}

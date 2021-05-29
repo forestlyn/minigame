@@ -600,7 +600,7 @@ MonoBehaviour:
   theCrouse: {fileID: 2309774761404282512}
   show_Pencil: 0
   show_Eraser: 0
-  clik: {fileID: 6539967969673695433, guid: 9be4eb37a8f2fc6478f840c5d8280b94, type: 3}
+  clik: {fileID: 0}
 --- !u!61 &2454674665937365055
 BoxCollider2D:
   m_ObjectHideFlags: 0

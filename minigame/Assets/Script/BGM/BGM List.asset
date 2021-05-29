@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10b841d5bb5d5d1408269eca3bd5f096, type: 3}
+  m_Name: BGM List
+  m_EditorClassIdentifier: 
+  BGMClips:
+  - {fileID: 8300000, guid: 671eb5ac7e259e6469e668e9c780831e, type: 3}
+  - {fileID: 8300000, guid: f42de46f712438b439bab00f5bc5341e, type: 3}
+  - {fileID: 8300000, guid: 082833cba80e7b240a37acd8673659e9, type: 3}

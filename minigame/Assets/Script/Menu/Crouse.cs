@@ -13,6 +13,7 @@ public class Crouse : MonoBehaviour
     private void Start()
     {
         crouse.SetActive(false);
+        clik = GameObject.FindGameObjectWithTag("FeedBack").GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -56,7 +57,6 @@ public class Crouse : MonoBehaviour
     }
     public void DestoryTheCrouse()
     {
-        Debug.Log("1");
         Destroy(theCrouse);
     }
 }

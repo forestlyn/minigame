@@ -5,8 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private AudioSource audioSource;
+    private void Start()
+    {
+        audioSource = GameObject.FindGameObjectWithTag("FeedBack").GetComponent<AudioSource>();
+    }
     public void Play()
     {
+        audioSource.Play();
         SceneManager.LoadSceneAsync("选择关卡");
     }
 

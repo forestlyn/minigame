@@ -11,8 +11,6 @@ public class PlayerController2 : Player
     [SerializeField] private float accumulateTime = 0;
     [Tooltip("角色蓄力跳最大高度与普通跳跃高度之比")]
     [SerializeField] private float ratio = 1.5f;
-
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -62,6 +60,7 @@ public class PlayerController2 : Player
             //跳跃
             if (Input.GetButtonUp("Accumulate") && (Mathf.Abs(rb.velocity.y) < 0.05f || Physics2D.Raycast(transform.position, Vector3.down, jumpRayLength, 1 << LayerMask.NameToLayer("Elevator"))))
             {
+                jump.Play();
                 database.accumulate = false;
                 database.jumping = true;
                 float _ratio = (Mathf.Sqrt(ratio) - 0.8f) * accumulateTime / maxAccumulateTime;

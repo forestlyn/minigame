@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6539967969673695434}
   - component: {fileID: 6539967969673695433}
+  - component: {fileID: 1119311632973080723}
   m_Layer: 0
   m_Name: "\u70B9\u51FB\u53CD\u9988"
-  m_TagString: Untagged
+  m_TagString: FeedBack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,3 +128,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1119311632973080723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6539967969673695432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce68ff6e2ded2344b7a45f293f03f99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
