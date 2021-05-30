@@ -50,7 +50,8 @@ public class Crouse : MonoBehaviour
    
     public void ContinueGame()
     {
-        clik.Play();
+        if (clik)
+            clik.Play();
         Time.timeScale = 1;
         
         DestoryTheCrouse();

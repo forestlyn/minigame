@@ -15,7 +15,8 @@ public class PauseMenu : MonoBehaviour
     }
     public void Pause()
     {
-        audioSource.Play();
+        if(audioSource)
+            audioSource.Play();
         Time.timeScale = 0;
         pause.SetActive(true);
         pauseButton.SetActive(false);
@@ -23,21 +24,24 @@ public class PauseMenu : MonoBehaviour
 
     public void ToMainMenu()
     {
-        audioSource.Play();
+        if (audioSource)
+            audioSource.Play();
         SceneManager.LoadSceneAsync("主菜单");
         Time.timeScale = 1;
     }
 
     public void RePlay()
     {
-        audioSource.Play();
+        if (audioSource)
+            audioSource.Play();
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
     }
 
     public void Continue()
     {
-        audioSource.Play();
+        if (audioSource)
+            audioSource.Play();
         Time.timeScale = 1;
         pause.SetActive(false);
         pauseButton.SetActive(true);

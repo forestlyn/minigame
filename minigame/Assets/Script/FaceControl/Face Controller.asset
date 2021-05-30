@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Face Controller
   m_EditorClassIdentifier: 
   smile: 0
-  cry: 1
-  isUsed: 1
+  cry: 0
+  isUsed: 0
