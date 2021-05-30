@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BGM List
   m_EditorClassIdentifier: 
   BGMClips:
-  - {fileID: 8300000, guid: 671eb5ac7e259e6469e668e9c780831e, type: 3}
+  - {fileID: 8300000, guid: f73eafcbc6acd7b41a8c28c118367b75, type: 3}
   - {fileID: 8300000, guid: f42de46f712438b439bab00f5bc5341e, type: 3}
-  - {fileID: 8300000, guid: 082833cba80e7b240a37acd8673659e9, type: 3}
+  - {fileID: 8300000, guid: d46cb5911be96cb49b68b51f9c621a3c, type: 3}

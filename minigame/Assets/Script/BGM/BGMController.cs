@@ -28,7 +28,7 @@ public class BGMController : MonoBehaviour
     private void Update()
     {
         int presentIndex = SceneManager.GetActiveScene().buildIndex;
-        Debug.Log(presentIndex);
+        //Debug.Log(presentIndex);
         switch (presentIndex)
         {
             case 0:

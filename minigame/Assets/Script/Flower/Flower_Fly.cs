@@ -39,7 +39,7 @@ public class Flower_Fly : MonoBehaviour
         }
     }
 
-    IEnumerator  ChangeColor()
+    IEnumerator ChangeColor()
     {
         float change_Color = Time.deltaTime;
 
@@ -58,7 +58,7 @@ public class Flower_Fly : MonoBehaviour
             }
             yield return new WaitForFixedUpdate();
         }
-        
+
     }
     #endregion
 
@@ -76,6 +76,9 @@ public class Flower_Fly : MonoBehaviour
             audioSource.Play();
             CreateFlower();
             StartCoroutine(Destroy());
+            //StartCoroutine(ChangePosition(finalPosition.position));
+            //StartCoroutine(ChangeTransparency(spriteRenderer.color, 0f));
+            //StartCoroutine(ChangeTransparency(cryColor.color, 0f));
         }
         if (!createFlower)
         {
@@ -91,13 +94,18 @@ public class Flower_Fly : MonoBehaviour
         Vector3 _finalPosition = finalPosition.position;
         Vector3 dir = (_finalPosition - transform.position).normalized;
 
-        while (spriteRenderer.color.a > 0)
+        while (spriteRenderer.color.a > 0 || transform.position != _finalPosition || cryColor.color.a > 0)
         {
             {//改变透明度
                 if (spriteRenderer.color.a > change_Color)
                     spriteRenderer.color -= new Color(0, 0, 0, change_Color);
                 else
                     spriteRenderer.color = new Color(originColor.r, originColor.g, originColor.b, 0);
+
+                if(cryColor.color.a > change_Color)
+                    cryColor.color -= new Color(0, 0, 0, change_Color);
+                else
+                    cryColor.color = new Color(cryColor.color.r, cryColor.color.g, cryColor.color.b, 0);
             }
 
             {//改变位置
@@ -125,4 +133,43 @@ public class Flower_Fly : MonoBehaviour
             Instantiate(flower_CannotFly, pos.position, transform.rotation);
         }
     }
+
+    //IEnumerator ChangePosition(Vector3 distination)
+    //{
+    //    Vector3 dir = (distination - transform.position).normalized;
+    //    while (transform.position != distination)
+    //    {
+    //        float distance = Vector3.Distance(transform.position, distination);
+    //        Vector3 change_Position = Time.deltaTime / time * Mathf.Pow(distance, 1.5f) * dir;
+    //        transform.position += change_Position;
+
+    //        yield return new WaitForFixedUpdate();
+    //    }
+    //}
+
+    //IEnumerator ChangeTransparency(Color color, float transparency)
+    //{
+    //    float changeTransparency = Time.deltaTime;
+
+    //    if (color.a > transparency)
+    //        while (color.a > transparency)
+    //        {
+    //            if (color.a - changeTransparency < transparency)
+    //                color.a = transparency;
+    //            else
+    //                color.a -= changeTransparency;
+
+    //            yield return new WaitForFixedUpdate();
+    //        }
+    //    else
+    //        while (color.a < transparency)
+    //        {
+    //            if (color.a + changeTransparency > transparency)
+    //                color.a = transparency;
+    //            else
+    //                color.a += changeTransparency;
+
+    //            yield return new WaitForFixedUpdate();
+    //        }
+    //}
 }
